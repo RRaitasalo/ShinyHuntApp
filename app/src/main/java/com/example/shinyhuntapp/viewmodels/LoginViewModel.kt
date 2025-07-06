@@ -23,21 +23,4 @@ class LoginViewModel(context: Context) : ViewModel() {
             }
         }
     }
-
-    fun register(username: String, password: String, onSuccess: () -> Unit, onFailure: () -> Unit) {
-        viewModelScope.launch {
-            val existingUser = db.userDao().getUserByUsername(username)
-            if (existingUser == null) {
-                val user = User(username = username, password = password)
-                db.userDao().insertUser(user)
-                val newUser = db.userDao().getUserByUsername(username)
-                newUser?.let {
-                    sharedPreferences.edit { putInt("logged_in_user_id", it.id) }
-                    onSuccess()
-                } ?: onFailure()
-            } else {
-                onFailure()
-            }
-        }
-    }
 }

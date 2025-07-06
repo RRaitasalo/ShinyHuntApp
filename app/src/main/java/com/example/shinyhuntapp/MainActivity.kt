@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.shinyhuntapp.ui.screens.LoginScreen
 import com.example.shinyhuntapp.ui.screens.MainScreen
+import com.example.shinyhuntapp.ui.screens.RegisterScreen
 import com.example.shinyhuntapp.ui.theme.ShinyHuntAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,11 +29,12 @@ class MainActivity : ComponentActivity() {
         val navController = rememberNavController()
         val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
         val userId = sharedPreferences.getInt("logged_in_user_id", -1)
-        val startDestination = if (userId != -1) "main" else "login"
+        //val startDestination = if (userId != -1) "main" else "login"
+        val startDestination = "login"
 
         NavHost(navController = navController, startDestination = startDestination) {
             composable("login") { LoginScreen(navController, this@MainActivity) }
-            composable("register") { /* TODO: Add Registration Screen */ }
+            composable("register") { RegisterScreen(navController, this@MainActivity) }
             composable("main") { MainScreen(navController) }
         }
     }
