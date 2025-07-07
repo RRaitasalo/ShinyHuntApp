@@ -1,7 +1,6 @@
 package com.example.shinyhuntapp.data.local
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 // User entity for account information
 @Entity(tableName = "users")
@@ -21,18 +20,38 @@ data class Pokemon(
     val type2: String?
 )
 
+@Entity(
+    tableName = "user_pokemon",
+    foreignKeys = [
+        ForeignKey(
+            entity = Pokemon::class,
+            parentColumns = ["id"],
+            childColumns = ["pokemonId"],
+            onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = User::class,
+            parentColumns = ["id"],
+            childColumns = ["userId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ],
+    indices = [Index("pokemonId"), Index("userId")]
+)
+data class UserPokemon(
+    @PrimaryKey(autoGenerate = true) val entryId: Long = 0,
+    val pokemonId: Int,
+    val userId: Int,
+    val hasCaughtShiny: Boolean,
+    val caughtDate: Long? = null
+)
+
+
 // Game entity for Pokémon games
 @Entity(tableName = "games")
 data class Game(
     @PrimaryKey val id: Int,
     val name: String
-)
-
-// Junction table for Pokémon and Games (many-to-many relationship)
-@Entity(tableName = "pokemonInGame", primaryKeys = ["pokemonId", "gameId"])
-data class PokemonInGame(
-    val pokemonId: Int,
-    val gameId: Int
 )
 
 // Hunt entity for tracking shiny hunts

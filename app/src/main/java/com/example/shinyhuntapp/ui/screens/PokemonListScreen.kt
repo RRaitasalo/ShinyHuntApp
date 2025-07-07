@@ -2,28 +2,27 @@ package com.example.shinyhuntapp.ui.screens
 
 import android.content.Context
 import android.util.Log
-import androidx.compose.runtime.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
+import com.example.shinyhuntapp.viewmodels.PokemonViewModelFactory
 
 @Composable
 fun PokemonListScreen(navController: NavController, context: Context) {
+
     val viewModel: PokemonViewModel = viewModel(
-        factory = object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return PokemonViewModel(context) as T
-            }
-        }
+        factory = PokemonViewModelFactory(context)
     )
     val pokemonList by viewModel.pokemonList.collectAsState()
 

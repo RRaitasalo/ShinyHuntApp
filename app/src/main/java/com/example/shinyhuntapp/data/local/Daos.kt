@@ -5,6 +5,8 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Delete
+import androidx.room.OnConflictStrategy
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
@@ -21,7 +23,7 @@ interface UserDao {
 @Dao
 interface PokemonDao {
     @Insert
-    suspend fun insertPokemons(pokemons: List<Pokemon>)
+    suspend fun insertAllPokemon(pokemons: List<Pokemon>)
 
     @Query("SELECT * FROM pokemon")
     suspend fun getAllPokemons(): List<Pokemon>
@@ -31,16 +33,23 @@ interface PokemonDao {
 }
 
 @Dao
+interface UserPokemonDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(userPokemon: UserPokemon)
+
+    @Query("SELECT * FROM user_pokemon WHERE pokemonId = :pokemonId")
+    fun observeByPokemonId(pokemonId: Int): Flow<UserPokemon?>
+
+    @Query("UPDATE user_pokemon SET hasCaughtShiny = :caught WHERE pokemonId = :pokemonId")
+    suspend fun setCaughtShiny(pokemonId: Int, caught: Boolean)
+}
+
+@Dao
 interface GameDao {
     @Insert
     suspend fun insertGames(games: List<Game>)
 }
 
-@Dao
-interface PokemonInGameDao {
-    @Insert
-    suspend fun insertPokemonGames(pokemonGames: List<PokemonInGame>)
-}
 
 @Dao
 interface HuntDao {
