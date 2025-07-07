@@ -39,45 +39,11 @@ abstract class AppDatabase : RoomDatabase() {
                 ).addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        CoroutineScope(Dispatchers.IO).launch {
-                            prePopulateData(context, getDatabase(context))
-                        }
                     }
                 }).build()
                 INSTANCE = instance
                 instance
             }
         }
-
-        private suspend fun prePopulateData(context: Context, db: AppDatabase) {
-            val json = context.assets.open("pokemon.json").bufferedReader().use { it.readText() }
-            val pokemonDataList = Gson().fromJson(json, Array<PokemonData>::class.java)
-
-            val gameNames = pokemonDataList.flatMap { it.games }.distinct()
-            val games = gameNames.mapIndexed { index, name -> Game(id = index + 1, name = name) }
-            db.gameDao().insertGames(games)
-            val gameMap = games.associateBy { it.name }
-
-            val pokemons = pokemonDataList.map { data ->
-                Pokemon(id = data.id, name = data.name, description = data.description, type = data.type)
-            }
-            db.pokemonDao().insertPokemons(pokemons)
-
-            val pokemonGames = pokemonDataList.flatMap { data ->
-                data.games.map { gameName ->
-                    PokemonInGame(pokemonId = data.id, gameId = gameMap[gameName]!!.id)
-                }
-            }
-            db.pokemonGameDao().insertPokemonGames(pokemonGames)
-        }
     }
 }
-
-// Data class to match JSON structure
-data class PokemonData(
-    val id: Int,
-    val name: String,
-    val description: String,
-    val type: String,
-    val games: List<String>
-)

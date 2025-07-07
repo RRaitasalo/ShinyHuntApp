@@ -16,8 +16,9 @@ data class User(
 data class Pokemon(
     @PrimaryKey val id: Int,
     val name: String,
-    val description: String,
-    val type: String // Comma-separated types, e.g., "Grass, Poison"
+    val nationalDexNumber: Int,
+    val type1: String,
+    val type2: String?
 )
 
 // Game entity for Pokémon games
