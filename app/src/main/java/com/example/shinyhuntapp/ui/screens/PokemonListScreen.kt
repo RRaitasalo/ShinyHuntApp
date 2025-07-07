@@ -24,23 +24,22 @@ fun PokemonListScreen(navController: NavController, context: Context) {
     val viewModel: PokemonViewModel = viewModel(
         factory = PokemonViewModelFactory(context)
     )
-    val pokemonList by viewModel.pokemonList.collectAsState()
+    val pokemonDetailsList by viewModel.pokemonDetailsList.collectAsState()
 
     // Trigger loading when the screen appears
     LaunchedEffect(Unit) {
-        viewModel.fetchPokemon()
-        Log.d("PokemonListScreen", "Pokemon list size: ${pokemonList.size}")
+        viewModel.fetchPokemonDetails()
     }
     Text("Pokemon List")
 
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(pokemonList) { pokemon ->
+        items(pokemonDetailsList) { pokemon ->
             Text(
                 text = pokemon.name.replaceFirstChar { it.uppercase() },
                 modifier = Modifier.padding(16.dp)
             )
         }
-        Log.d("PokemonListScreen", "Pokemon list: $pokemonList")
+        Log.d("PokemonListScreen", "Pokemon list: $pokemonDetailsList")
     }
 }
