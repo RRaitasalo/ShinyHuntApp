@@ -13,7 +13,10 @@ object DatabaseProvider {
                 context.applicationContext,
                 AppDatabase::class.java,
                 "shinyhunt-db"
-            ).build().also { INSTANCE = it }
+            )
+                .fallbackToDestructiveMigration(true)
+                .build()
+                .also { INSTANCE = it }
         }
     }
 }

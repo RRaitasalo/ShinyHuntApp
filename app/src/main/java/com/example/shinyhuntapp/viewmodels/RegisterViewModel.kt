@@ -1,16 +1,16 @@
 package com.example.shinyhuntapp.viewmodels
 
 import android.content.Context
-import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shinyhuntapp.data.local.AppDatabase
+import com.example.shinyhuntapp.data.PreferenceManager
+import com.example.shinyhuntapp.data.local.DatabaseProvider
 import com.example.shinyhuntapp.data.local.User
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(context: Context): ViewModel() {
-    private val db = AppDatabase.getDatabase(context)
-    private val sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+    private val db = DatabaseProvider.getDatabase(context)
+    private val preferences = PreferenceManager(context)
 
     fun register(username: String, password: String, onSuccess: () -> Unit, onFailure: () -> Unit) {
         viewModelScope.launch {
@@ -20,7 +20,7 @@ class RegisterViewModel(context: Context): ViewModel() {
                 db.userDao().insertUser(user)
                 val newUser = db.userDao().getUserByUsername(username)
                 newUser?.let {
-                    sharedPreferences.edit { putInt("logged_in_user_id", it.id) }
+                    preferences.saveLoggedInUserId(user.id)
                     onSuccess()
                 } ?: onFailure()
             } else {

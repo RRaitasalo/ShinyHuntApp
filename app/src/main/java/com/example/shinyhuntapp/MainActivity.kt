@@ -1,6 +1,7 @@
 package com.example.shinyhuntapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -8,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.shinyhuntapp.data.PreferenceManager
 import com.example.shinyhuntapp.ui.screens.*
 import com.example.shinyhuntapp.ui.theme.ShinyHuntAppTheme
 
@@ -25,8 +27,8 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun AppNavigation() {
         val navController = rememberNavController()
-        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
-        val userId = sharedPreferences.getInt("logged_in_user_id", -1)
+        val preferences = PreferenceManager(this)
+        val userId = preferences.getLoggedInUserId()
         val startDestination = if (userId != -1) "pokemon_list" else "login"
         //val startDestination = "login"
 

@@ -23,7 +23,7 @@ interface UserDao {
 @Dao
 interface PokemonDao {
     @Insert
-    suspend fun insertAllPokemon(pokemons: List<Pokemon>)
+    suspend fun insertAllPokemon(pokemonList: List<Pokemon>)
 
     @Query("SELECT * FROM pokemon")
     suspend fun getAllPokemons(): List<Pokemon>

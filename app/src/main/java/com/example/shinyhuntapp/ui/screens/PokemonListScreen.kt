@@ -32,7 +32,7 @@ fun PokemonListScreen(navController: NavController, context: Context) {
     }
     Text("Pokemon List")
 
-
+/*
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(pokemonDetailsList) { pokemon ->
             Text(
@@ -40,6 +40,5 @@ fun PokemonListScreen(navController: NavController, context: Context) {
                 modifier = Modifier.padding(16.dp)
             )
         }
-        Log.d("PokemonListScreen", "Pokemon list: $pokemonDetailsList")
-    }
+    }*/
 }

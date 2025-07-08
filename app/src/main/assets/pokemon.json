@@ -1,4 +1,0 @@
-[
-  {"id": 1, "name": "Bulbasaur", "description": "A grass/poison type Pokémon", "type": "Grass, Poison", "games": ["Red", "Blue"]},
-  {"id": 4, "name": "Charmander", "description": "A fire type Pokémon", "type": "Fire", "games": ["Red", "Blue"]}
-]
