@@ -19,16 +19,14 @@ import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 import com.example.shinyhuntapp.viewmodels.PokemonViewModelFactory
 
 @Composable
-fun PokemonListScreen(navController: NavController, context: Context) {
+fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel) {
 
-    val viewModel: PokemonViewModel = viewModel(
-        factory = PokemonViewModelFactory(context)
-    )
     val pokemonDetailsList by viewModel.pokemonDetailsList.collectAsState()
 
     // Trigger loading when the screen appears
     LaunchedEffect(Unit) {
-        viewModel.fetchPokemonDetails()
+        //viewModel.fetchPokemonDetails()
+        viewModel.fetchAndStorePokemonIfNeeded()
     }
     Text("Pokemon List")
 

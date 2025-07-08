@@ -22,7 +22,7 @@ interface UserDao {
 
 @Dao
 interface PokemonDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllPokemon(pokemonList: List<Pokemon>)
 
     @Query("SELECT * FROM pokemon")
@@ -30,6 +30,9 @@ interface PokemonDao {
 
     @Query("SELECT * FROM pokemon WHERE id = :id")
     suspend fun getPokemonById(id: Int): Pokemon?
+
+    @Query("DELETE FROM pokemon")
+    suspend fun deleteAll()
 }
 
 @Dao

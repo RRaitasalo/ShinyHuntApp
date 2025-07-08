@@ -21,7 +21,7 @@ class PokemonViewModel(
     private val pokemonDao: PokemonDao,
     private val userPokemonDao: UserPokemonDao,
     private val api: PokeApiService,
-    private val preferenceManager: PreferenceManager
+    private val preferences: PreferenceManager
 ): ViewModel() {
 
     private val _pokemonDetailsList = MutableStateFlow<List<PokemonDetails>>(emptyList())
@@ -44,12 +44,13 @@ class PokemonViewModel(
     }
 
     fun fetchAndStorePokemonIfNeeded() {
-        if (!preferenceManager.hasFetchedPokemon()) {
+        if (!preferences.hasFetchedPokemon()) {
             fetchAndStoreAllPokemon()
         }
     }
 
     fun fetchAndStoreAllPokemon() {
+        Log.d("PokemonViewModel", "Fetching and storing all Pokémon")
         viewModelScope.launch {
             try {
                 val listResponse = api.getPokemonList()
@@ -66,7 +67,7 @@ class PokemonViewModel(
 
                 // Save all to Room in one go
                 pokemonDao.insertAllPokemon(pokemonList)
-                preferenceManager.setHasFetchedPokemon(true)
+                preferences.setHasFetchedPokemon(true)
 
             } catch (e: Exception) {
                 Log.e("PokemonViewModel", "Error fetching Pokémon", e)
@@ -85,6 +86,23 @@ class PokemonViewModel(
             type1 = type1,
             type2 = type2
         )
+    }
+
+    // -- DEVELOPER TOOLS --
+    fun clearPokemonTable(){
+        viewModelScope.launch {
+            pokemonDao.deleteAll()
+            preferences.setHasFetchedPokemon(false)
+        }
+    }
+
+    fun resetFirstLaunchFlag() {
+        preferences.setHasFetchedPokemon(false)
+    }
+
+    fun forceFetchPokemon() {
+        fetchAndStoreAllPokemon()
+        preferences.setHasFetchedPokemon(true)
     }
 
 

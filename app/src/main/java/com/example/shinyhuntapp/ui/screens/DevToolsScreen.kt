@@ -5,32 +5,43 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 @Composable
-fun MainScreen(navController: NavController) {
-
+fun DevToolsScreen(
+    navController: NavController,
+    viewModel: PokemonViewModel
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Button(
-            onClick = { navController.navigate("pokemon_list") },
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Text("Pokemon List")
+        Text("Developer Tools", style = MaterialTheme.typography.headlineMedium)
+
+        Button(onClick = {
+            viewModel.clearPokemonTable()
+        }) {
+            Text("❌ Delete All Pokémon")
         }
-        Button(
-            onClick = { navController.navigate("dev_tools") },
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Text("Developer Tools")
+
+        Button(onClick = {
+            viewModel.resetFirstLaunchFlag()
+        }) {
+            Text("🔄 Reset Fetch Flag")
+        }
+
+        Button(onClick = {
+            viewModel.forceFetchPokemon()
+        }) {
+            Text("⬇️ Fetch All Pokémon Now")
         }
     }
 }
