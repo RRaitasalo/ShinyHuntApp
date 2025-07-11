@@ -8,8 +8,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.shinyhuntapp.R
+import com.example.shinyhuntapp.navigation.Routes
 
 @Composable
 fun MainScreen(navController: NavController) {
@@ -21,16 +24,16 @@ fun MainScreen(navController: NavController) {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Button(
-            onClick = { navController.navigate("pokemon_list") },
+            onClick = { navController.navigate(Routes.POKEMON_LIST) },
             modifier = Modifier.padding(16.dp)
         ) {
-            Text("Pokemon List")
+            Text(stringResource(R.string.pokemon_list))
         }
         Button(
-            onClick = { navController.navigate("dev_tools") },
+            onClick = { navController.navigate(Routes.DEV_TOOLS) },
             modifier = Modifier.padding(16.dp)
         ) {
-            Text("Developer Tools")
+            Text(stringResource(R.string.dev_tools))
         }
     }
 }

@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,6 +31,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.shinyhuntapp.R
+import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.viewmodels.RegisterViewModel
 import kotlinx.coroutines.launch
 
@@ -50,12 +53,14 @@ fun RegisterScreen(navController: NavController, context: Context) {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
+    val usernameInUseMessage = stringResource(R.string.username_already_in_use)
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = { Text(
-                    text = "Register",
+                    text = stringResource(R.string.register),
                     style = MaterialTheme.typography.headlineMedium
                 )
                 },
@@ -63,7 +68,7 @@ fun RegisterScreen(navController: NavController, context: Context) {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.back)
                         )
                     }
                 }
@@ -78,13 +83,13 @@ fun RegisterScreen(navController: NavController, context: Context) {
             TextField(
                 value = username.value,
                 onValueChange = { username.value = it },
-                label = { Text("Username") },
+                label = { Text(stringResource(R.string.username)) },
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             TextField(
                 value = password.value,
                 onValueChange = { password.value = it },
-                label = { Text("Password") },
+                label = { Text(stringResource(R.string.password)) },
                 visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier.padding(bottom = 8.dp)
             )
@@ -93,17 +98,17 @@ fun RegisterScreen(navController: NavController, context: Context) {
                     viewModel.register(
                         username.value,
                         password.value,
-                        onSuccess = { navController.navigate("login") },
+                        onSuccess = { navController.navigate(Routes.LOGIN) },
                         onFailure = {
                             coroutineScope.launch {
-                                snackbarHostState.showSnackbar("Username already in use")
+                                snackbarHostState.showSnackbar(usernameInUseMessage)
                             }
                         }
                     )
                 },
                 modifier = Modifier.padding(top = 8.dp)
             ) {
-                Text("Register")
+                Text(stringResource(R.string.register))
             }
         }
     }

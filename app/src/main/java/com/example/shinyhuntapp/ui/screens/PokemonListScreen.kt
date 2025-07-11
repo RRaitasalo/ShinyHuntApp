@@ -10,8 +10,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 @Composable
@@ -24,7 +26,7 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
         viewModel.fetchAndStorePokemonIfNeeded()
         viewModel.fetchPokemonList()
     }
-    Text("Pokemon List")
+    Text(stringResource(R.string.pokemon_list))
 
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {

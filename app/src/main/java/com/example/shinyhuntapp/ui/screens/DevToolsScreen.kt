@@ -9,8 +9,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 @Composable
@@ -24,30 +26,30 @@ fun DevToolsScreen(
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Developer Tools", style = MaterialTheme.typography.headlineMedium)
+        Text(stringResource(R.string.dev_tools), style = MaterialTheme.typography.headlineMedium)
 
         Button(onClick = {
             viewModel.clearPokemonTable()
         }) {
-            Text("❌ Delete All Pokémon")
+            Text(stringResource(R.string.delete_pokemon))
         }
 
         Button(onClick = {
             viewModel.resetFirstLaunchFlag()
         }) {
-            Text("🔄 Reset Fetch Flag")
+            Text(stringResource(R.string.reset_fetch_flag))
         }
 
         Button(onClick = {
             viewModel.forceFetchPokemon()
         }) {
-            Text("⬇️ Fetch All Pokémon Now")
+            Text(stringResource(R.string.fetch_all_pokemon_now))
         }
 
         Button(onClick = {
             viewModel.getPokemon(1)
         }) {
-            Text("Fetch One Pokemon (Should Fix App Inspection)")
+            Text(stringResource(R.string.fetch_one_pokemon))
         }
     }
 }

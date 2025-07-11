@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">ShinyHuntApp</string>
+    <string name="main">Main</string>
+
+    -- Login and Register--
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create account</string>
+    <string name="register">Register</string>
+    <string name="wrong_credentials">Wrong username or password</string>"
+    <string name="username_already_in_use">Username already in use</string>
+
+    -- Pokemon List
+    <string name="pokemon_list">Pokemon List</string>
+
+    -- Dev Tools --
+    <string name="dev_tools">Developer Tools</string>
+    <string name="delete_pokemon">❌ Delete All Pokémon</string>
+    <string name="reset_fetch_flag">🔄 Reset Fetch Flag</string>
+    <string name="fetch_all_pokemon_now">⬇️ Fetch All Pokémon Now</string>
+    <string name="fetch_one_pokemon">Fetch One Pokemon (Should Fix App Inspection)</string>
+
+    -- Buttons --
+    <string name="back">Back</string>"
+
 </resources>

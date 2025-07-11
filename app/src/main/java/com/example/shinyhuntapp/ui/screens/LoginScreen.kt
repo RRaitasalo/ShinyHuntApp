@@ -19,12 +19,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.shinyhuntapp.R
+import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import kotlinx.coroutines.launch
 
@@ -45,13 +48,15 @@ fun LoginScreen(navController: NavController, context: Context) {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
+    val wrongCredentialsMessage = stringResource(R.string.wrong_credentials)
+
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = { Text(
-                    text = "Login",
+                    text = stringResource(R.string.login),
                     style = MaterialTheme.typography.headlineMedium
                 )
                 }
@@ -66,13 +71,13 @@ fun LoginScreen(navController: NavController, context: Context) {
             TextField(
                 value = username.value,
                 onValueChange = { username.value = it },
-                label = { Text("Username") },
+                label = { Text(stringResource(R.string.username)) },
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             TextField(
                 value = password.value,
                 onValueChange = { password.value = it },
-                label = { Text("Password") },
+                label = { Text(stringResource(R.string.password)) },
                 visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier.padding(bottom = 8.dp)
             )
@@ -81,23 +86,23 @@ fun LoginScreen(navController: NavController, context: Context) {
                     viewModel.login(
                         username.value,
                         password.value,
-                        onSuccess = { navController.navigate("main") },
+                        onSuccess = { navController.navigate(Routes.MAIN) },
                         onFailure = {
                             coroutineScope.launch {
-                                snackbarHostState.showSnackbar("Wrong username or password")
+                                snackbarHostState.showSnackbar(wrongCredentialsMessage)
                             }
                         }
                     )
                 },
                 modifier = Modifier.padding(top = 8.dp)
             ) {
-                Text("Login")
+                Text(stringResource(R.string.login))
             }
             Button(
-                onClick = { navController.navigate("register") },
+                onClick = { navController.navigate(Routes.REGISTER) },
                 modifier = Modifier.padding(top = 8.dp)
             ) {
-                Text("Create account")
+                Text(stringResource(R.string.create_account))
             }
         }
     }
