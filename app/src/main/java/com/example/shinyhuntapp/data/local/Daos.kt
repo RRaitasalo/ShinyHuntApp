@@ -26,7 +26,7 @@ interface PokemonDao {
     suspend fun insertAllPokemon(pokemonList: List<Pokemon>)
 
     @Query("SELECT * FROM pokemon")
-    suspend fun getAllPokemons(): List<Pokemon>
+    suspend fun getAllPokemon(): List<Pokemon>
 
     @Query("SELECT * FROM pokemon WHERE id = :id")
     suspend fun getPokemonById(id: Int): Pokemon?

@@ -24,30 +24,8 @@ class PokemonViewModel(
     private val preferences: PreferenceManager
 ): ViewModel() {
 
-    private val _pokemonDetailsList = MutableStateFlow<List<PokemonDetails>>(emptyList())
-    val pokemonDetailsList: StateFlow<List<PokemonDetails>> = _pokemonDetailsList
-
-    fun fetchPokemonDetails() {
-        viewModelScope.launch {
-            try {
-                val response = api.getPokemonList()
-                for (pokemon in response.results) {
-                    val detailsResponse = api.getPokemonDetailsByUrl(url = pokemon.url)
-                    Log.d("PokemonViewModel", "Pokemon details: $detailsResponse")
-                    _pokemonDetailsList.value = _pokemonDetailsList.value + detailsResponse
-                }
-                Log.d("PokemonViewModel", "Pokemon details list: ${_pokemonDetailsList.value}")
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    fun fetchAndStorePokemonIfNeeded() {
-        if (!preferences.hasFetchedPokemon()) {
-            fetchAndStoreAllPokemon()
-        }
-    }
+    private val _pokemonList = MutableStateFlow<List<Pokemon>>(emptyList())
+    val pokemonList: StateFlow<List<Pokemon>> = _pokemonList
 
     fun getPokemonById(id: Int): Pokemon? {
         viewModelScope.launch {
@@ -59,6 +37,23 @@ class PokemonViewModel(
             }
         }
         return null
+    }
+
+    fun fetchPokemonList() {
+        viewModelScope.launch {
+            try {
+                val pokemonList = pokemonDao.getAllPokemon()
+                _pokemonList.value = pokemonList
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error fetching Pokémon", e)
+            }
+        }
+    }
+
+    fun fetchAndStorePokemonIfNeeded() {
+        if (!preferences.hasFetchedPokemon()) {
+            fetchAndStoreAllPokemon()
+        }
     }
 
     fun fetchAndStoreAllPokemon() {
