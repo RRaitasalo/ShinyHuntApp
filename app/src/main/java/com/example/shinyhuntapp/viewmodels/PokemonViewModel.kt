@@ -49,6 +49,18 @@ class PokemonViewModel(
         }
     }
 
+    fun getPokemonById(id: Int): Pokemon? {
+        viewModelScope.launch {
+            try {
+                pokemonDao.getPokemonById(id)
+                Log.d("PokemonViewModel", "Pokemon fetched from Room")
+            } catch (e: Exception) {
+                Log.d("PokemonViewModel", "Error fetching Pokémon", e)
+            }
+        }
+        return null
+    }
+
     fun fetchAndStoreAllPokemon() {
         Log.d("PokemonViewModel", "Fetching and storing all Pokémon")
         viewModelScope.launch {
@@ -59,6 +71,7 @@ class PokemonViewModel(
                 val pokemonList = mutableListOf<Pokemon>()
 
                 for (entry in entries) {
+                    Log.d("PokemonViewModel", "Fetching details for ${entry.name}")
                     val url = entry.url
                     val details = api.getPokemonDetailsByUrl(url)
                     val pokemon = mapToPokemon(details)
@@ -103,6 +116,10 @@ class PokemonViewModel(
     fun forceFetchPokemon() {
         fetchAndStoreAllPokemon()
         preferences.setHasFetchedPokemon(true)
+    }
+
+    fun getPokemon(id: Int): Pokemon? {
+        return getPokemonById(id)
     }
 
 

@@ -43,5 +43,11 @@ fun DevToolsScreen(
         }) {
             Text("⬇️ Fetch All Pokémon Now")
         }
+
+        Button(onClick = {
+            viewModel.getPokemon(1)
+        }) {
+            Text("Fetch One Pokemon (Should Fix App Inspection)")
+        }
     }
 }
