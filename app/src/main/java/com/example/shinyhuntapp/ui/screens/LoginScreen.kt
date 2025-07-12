@@ -29,7 +29,10 @@ import androidx.navigation.NavController
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.viewmodels.LoginViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,6 +52,7 @@ fun LoginScreen(navController: NavController, context: Context) {
     val coroutineScope = rememberCoroutineScope()
 
     val wrongCredentialsMessage = stringResource(R.string.wrong_credentials)
+    val errorLoggingInAsGuestMessage = stringResource(R.string.error_logging_in_as_guest)
 
 
     Scaffold(
@@ -99,10 +103,30 @@ fun LoginScreen(navController: NavController, context: Context) {
                 Text(stringResource(R.string.login))
             }
             Button(
-                onClick = { navController.navigate(Routes.REGISTER) },
+                onClick = {
+                    navController.navigate(Routes.REGISTER) },
                 modifier = Modifier.padding(top = 8.dp)
             ) {
                 Text(stringResource(R.string.create_account))
+            }
+            Button(
+                onClick = {
+                    viewModel.loginAsGuest(
+                        onSuccess = {
+                            navController.navigate(Routes.MAIN) {
+                                popUpTo(Routes.LOGIN) { inclusive = true }
+                            }
+                        },
+                        onFailure = {
+                            coroutineScope.launch {
+                                snackbarHostState.showSnackbar(errorLoggingInAsGuestMessage)
+                            }
+                        }
+                    )
+                },
+                modifier = Modifier.padding(top = 8.dp)
+            ) {
+                Text(stringResource(R.string.continue_as_guest))
             }
         }
     }

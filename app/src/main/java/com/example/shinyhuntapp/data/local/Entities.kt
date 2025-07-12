@@ -45,7 +45,8 @@ data class UserPokemon(
     val pokemonId: Int,
     val userId: Int,
     val hasCaughtShiny: Boolean,
-    val caughtDate: Long? = null
+    val caughtDate: Long? = null,
+    val caughtCount: Int = 0
 )
 
 
@@ -66,3 +67,8 @@ data class Hunt(
     val encounters: Int, // Number of encounters
     val isFoundShiny: Boolean // Whether shiny was found
 )
+
+object GuestUser {
+    const val ID = -1
+    const val USERNAME = "guest"
+}

@@ -3,6 +3,7 @@ package com.example.shinyhuntapp.data
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import com.example.shinyhuntapp.data.local.GuestUser
 
 class PreferenceManager(context: Context) {
     private val prefs: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
@@ -12,7 +13,8 @@ class PreferenceManager(context: Context) {
     }
 
     fun getLoggedInUserId(): Int {
-        return prefs.getInt("user_id", -1)
+        val id = prefs.getInt("user_id", -1)
+        return if (id == -1) GuestUser.ID else id
     }
 
     fun clearLoggedInUserId() {

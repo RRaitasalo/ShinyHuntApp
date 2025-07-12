@@ -68,6 +68,8 @@ class PokemonViewModel(
     fun fetchAndStorePokemonIfNeeded() {
         if (!preferences.hasFetchedPokemon()) {
             fetchAndStoreAllPokemon()
+        } else {
+            Log.d("PokemonViewModel", "Pokemon already fetched")
         }
     }
 

@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase
         Game::class,
         Hunt::class
         ],
-    version = 4
+    version = 6
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao

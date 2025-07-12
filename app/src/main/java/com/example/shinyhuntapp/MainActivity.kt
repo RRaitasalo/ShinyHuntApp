@@ -68,7 +68,7 @@ class MainActivity : ComponentActivity() {
             composable(Routes.REGISTER) { RegisterScreen(navController, this@MainActivity) }
             composable(Routes.MAIN) { MainScreen(navController, pokemonViewModel, loginViewModel) }
             composable(Routes.POKEMON_LIST) { PokemonListScreen(navController, pokemonViewModel) }
-            composable(Routes.DEV_TOOLS) { DevToolsScreen(navController, pokemonViewModel) }
+            composable(Routes.DEV_TOOLS) { DevToolsScreen(navController, pokemonViewModel, loginViewModel) }
             composable(
                 route = "${Routes.POKEMON_INFO}/{$pokemonIdString}",
                 arguments = listOf(navArgument(pokemonIdString) { type = NavType.IntType })

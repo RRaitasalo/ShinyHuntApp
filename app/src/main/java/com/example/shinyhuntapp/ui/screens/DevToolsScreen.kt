@@ -13,12 +13,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.shinyhuntapp.R
+import com.example.shinyhuntapp.navigation.Routes
+import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 @Composable
 fun DevToolsScreen(
     navController: NavController,
-    viewModel: PokemonViewModel
+    pokemonViewModel: PokemonViewModel,
+    loginViewModel: LoginViewModel
 ) {
     Column(
         modifier = Modifier
@@ -29,27 +32,39 @@ fun DevToolsScreen(
         Text(stringResource(R.string.dev_tools), style = MaterialTheme.typography.headlineMedium)
 
         Button(onClick = {
-            viewModel.clearPokemonTable()
+            pokemonViewModel.clearPokemonTable()
         }) {
             Text(stringResource(R.string.delete_pokemon))
         }
 
         Button(onClick = {
-            viewModel.resetFirstLaunchFlag()
+            pokemonViewModel.resetFirstLaunchFlag()
         }) {
             Text(stringResource(R.string.reset_fetch_flag))
         }
 
         Button(onClick = {
-            viewModel.forceFetchPokemon()
+            pokemonViewModel.forceFetchPokemon()
         }) {
             Text(stringResource(R.string.fetch_all_pokemon_now))
         }
 
         Button(onClick = {
-            viewModel.getPokemon(1)
+            pokemonViewModel.getPokemon(1)
         }) {
             Text(stringResource(R.string.fetch_one_pokemon))
+        }
+
+        Button(
+            onClick = {
+                pokemonViewModel.clearPokemonTable()
+                loginViewModel.logout()
+                navController.navigate(Routes.LOGIN) {
+                    popUpTo(Routes.MAIN) { inclusive = true }
+                }
+            }
+        ) {
+            Text(stringResource(R.string.log_out))
         }
     }
 }
