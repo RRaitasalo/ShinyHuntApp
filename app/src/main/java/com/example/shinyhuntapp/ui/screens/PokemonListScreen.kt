@@ -117,7 +117,7 @@ fun PokemonCard(
                 modifier = Modifier.padding(16.dp)
             ) {
                 AsyncImage(
-                    model = pokemon.spriteUrl,
+                    model = if (hasCaughtShiny) pokemon.shinySprite else pokemon.spriteUrl,
                     contentDescription = stringResource(R.string.picture_of, pokemon.name),
                     modifier = Modifier.size(96.dp)
                 )
@@ -143,7 +143,7 @@ fun PokemonCard(
             ) {
                 Icon(
                     imageVector = if (hasCaughtShiny) Icons.Filled.Star else Icons.Outlined.Star,
-                    contentDescription = if (hasCaughtShiny) "Shiny caught" else "Mark as shiny caught",
+                    contentDescription = if (hasCaughtShiny) stringResource(R.string.shiny_caught) else stringResource(R.string.mark_as_shiny_caught),
                     tint = if (hasCaughtShiny) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
             }

@@ -17,6 +17,8 @@
     <string name="pokemon_list">Pokemon List</string>
     <string name="card_dex_number">Dex #: %1$s</string>"
     <string name="picture_of">A picture of %1$s</string>
+    <string name="shiny_caught">Shiny caught</string>
+    <string name="mark_as_shiny_caught">Mark as shiny caught</string>
 
     -- Pokemon Info Screen --
     <string name="pokemon_info">Pokemon Info</string>
