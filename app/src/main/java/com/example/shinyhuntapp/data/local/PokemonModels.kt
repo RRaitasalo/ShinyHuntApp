@@ -46,3 +46,22 @@ data class TypeInfo(
     val name: String,
     val url: String
 )
+
+enum class HuntMethod(val displayName: String) {
+    RANDOM_ENCOUNTER("Random Encounter"),
+    MASUDA_METHOD("Masuda Method"),
+    RADAR("Radar"),
+    SOFT_RESET("Soft Reset"),
+    CHAIN_FISHING("Chain Fishing"),
+    DEXNAV("DexNav"),
+    SOS_CALLING("SOS Calling"),
+    DYNAMAX_ADVENTURE("Dynamax Adventure"),
+    OUTBREAK("Outbreak"),
+    SANDWICH_METHOD("Sandwich Method");
+
+    companion object {
+        fun fromDisplayName(displayName: String): HuntMethod? {
+            return HuntMethod.entries.find { it.displayName == displayName }
+        }
+    }
+}

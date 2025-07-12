@@ -1,6 +1,19 @@
 package com.example.shinyhuntapp.data.local
 
 import androidx.room.*
+import com.example.shinyhuntapp.data.local.HuntMethod
+
+class Converters {
+    @TypeConverter
+    fun fromHuntMethod(huntMethod: HuntMethod): String {
+        return huntMethod.displayName
+    }
+
+    @TypeConverter
+    fun toHuntMethod(displayName: String): HuntMethod {
+        return HuntMethod.fromDisplayName(displayName) ?: HuntMethod.RANDOM_ENCOUNTER
+    }
+}
 
 // User entity for account information
 @Entity(tableName = "users")
@@ -58,15 +71,34 @@ data class Game(
     val name: String
 )
 
-// Hunt entity for tracking shiny hunts
-@Entity(tableName = "hunt")
+@Entity(
+    tableName = "hunts",
+    foreignKeys = [
+        ForeignKey(
+            entity = Pokemon::class,
+            parentColumns = ["id"],
+            childColumns = ["pokemonId"],
+            onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = User::class,
+            parentColumns = ["id"],
+            childColumns = ["userId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ],
+    indices = [Index("pokemonId"), Index("userId")]
+)
 data class Hunt(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val userId: Int,
     val pokemonId: Int,
-    val method: String, // Hunting method, e.g., "WildEncounter"
-    val encounters: Int, // Number of encounters
-    val isFoundShiny: Boolean // Whether shiny was found
+    val userId: Int,
+    val method: String,
+    val encounters: Int,
+    val huntMethod: HuntMethod,
+    val startDate: Long = System.currentTimeMillis(),
+    val endDate: Long? = null,
+    val isFoundShiny: Boolean = false
 )
 
 object GuestUser {

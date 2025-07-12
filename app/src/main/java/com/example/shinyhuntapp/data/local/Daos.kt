@@ -78,12 +78,21 @@ interface HuntDao {
     @Delete
     suspend fun deleteHunt(hunt: Hunt)
 
-    @Query("SELECT * FROM hunt WHERE userId = :userId AND pokemonId = :pokemonId")
+    @Query("SELECT * FROM hunts WHERE userId = :userId AND pokemonId = :pokemonId")
     suspend fun getHuntsByUserAndPokemon(userId: Int, pokemonId: Int): List<Hunt>
 
-    @Query("SELECT * FROM hunt WHERE userId = :userId AND isFoundShiny = 1")
+    @Query("SELECT * FROM hunts WHERE id = :huntId")
+    suspend fun getHuntById(huntId: Long): Hunt?
+
+    @Query("SELECT * FROM hunts WHERE userId = :userId AND isFoundShiny = 1")
     suspend fun getCompletedHuntsByUser(userId: Int): List<Hunt>
 
-    @Query("SELECT * FROM hunt WHERE userId = :userId AND isFoundShiny = 0")
+    @Query("SELECT * FROM hunts WHERE userId = :userId AND isFoundShiny = 0")
     suspend fun getOngoingHuntsByUser(userId: Int): List<Hunt>
+
+    @Query("SELECT * FROM hunts WHERE userId = :userId")
+    suspend fun getAllHunts(userId: Int): List<Hunt>
+
+    @Query("UPDATE hunts SET encounters = encounters + :amount WHERE id = :huntId")
+    suspend fun addEncounters(huntId: Long, amount: Int)
 }
