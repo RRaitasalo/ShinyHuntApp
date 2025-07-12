@@ -63,13 +63,8 @@ class MainActivity : ComponentActivity() {
                 route = "${Routes.POKEMON_INFO}/{pokemonId}",
                 arguments = listOf(navArgument("pokemonId") { type = NavType.IntType })
             ) { backStackEntry ->
-                val pokemonId = backStackEntry.arguments?.getInt("pokemonId")
-                val pokemon = pokemonViewModel.getPokemonById(pokemonId)
-                if (pokemon != null) {
-                    PokemonInfoScreen(navController, pokemon)
-                } else {
-                    Text("Pokémon not found")
-                }
+                val pokemonId = backStackEntry.arguments?.getInt("pokemonId") ?: -1
+                PokemonInfoScreen(navController, pokemonId, pokemonViewModel)
             }
         }
     }

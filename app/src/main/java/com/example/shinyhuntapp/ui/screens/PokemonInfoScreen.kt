@@ -13,23 +13,37 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.Pokemon
+import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonInfoScreen(navController: NavController, pokemon: Pokemon) {
+fun PokemonInfoScreen(navController: NavController, pokemonId: Int, viewModel: PokemonViewModel) {
+
+    var pokemon by remember { mutableStateOf<Pokemon?>(null) }
+
+    LaunchedEffect(pokemonId) {
+        viewModel.getPokemonById(pokemonId) {
+            pokemon = it
+        }
+    }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = { Text(
-                    text = pokemon.name,
+                    text = pokemon?.name.toString(),
                     style = MaterialTheme.typography.headlineMedium
                 )
                 },
@@ -48,8 +62,8 @@ fun PokemonInfoScreen(navController: NavController, pokemon: Pokemon) {
             modifier = Modifier.padding(innerPadding)
         ){
             Text(text = "Pokémon Information")
-            Text(text = "Name: ${pokemon.name}")
-            Text(text = "National Dex Number: ${pokemon.nationalDexNumber}")
+            Text(text = "Name: ${pokemon?.name}")
+            Text(text = "National Dex Number: ${pokemon?.nationalDexNumber}")
         }
     }
 }

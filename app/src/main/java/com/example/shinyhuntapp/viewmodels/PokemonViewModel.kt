@@ -39,8 +39,19 @@ class PokemonViewModel(
         return null
     }
 
-    fun getPokemonById(id: Int?): Pokemon? {
+    /*fun getPokemonById(id: Int?): Pokemon? {
         return _pokemonList.value.find { it.id == id }
+    }*/
+    fun getPokemonById(id: Int, onResult: (Pokemon?) -> Unit) {
+        viewModelScope.launch {
+            try {
+                val pokemon = pokemonDao.getPokemonById(id)
+                onResult(pokemon)
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error fetching Pokémon by ID", e)
+                onResult(null)
+            }
+        }
     }
 
     fun fetchPokemonList() {
