@@ -13,6 +13,7 @@
 
     -- Pokemon List
     <string name="pokemon_list">Pokemon List</string>
+    <string name="card_dex_number">Dex #: %1$s</string>"
 
     -- Dev Tools --
     <string name="dev_tools">Developer Tools</string>

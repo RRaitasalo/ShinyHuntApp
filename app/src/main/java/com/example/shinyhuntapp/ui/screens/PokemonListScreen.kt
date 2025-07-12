@@ -31,6 +31,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.Pokemon
+import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,20 +65,23 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                 .padding(innerPadding)
         ) {
             items(pokemonList) { pokemon ->
-                PokemonCard(pokemon)
+                PokemonCard(navController, pokemon)
             }
         }
     }
 }
 
 @Composable
-fun PokemonCard(pokemon: Pokemon) {
+fun PokemonCard(navController: NavController, pokemon: Pokemon) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(8.dp),
+        onClick = {
+            navController.navigate(Routes.pokemonInfoWithId(pokemon.id))
+        }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -96,7 +100,7 @@ fun PokemonCard(pokemon: Pokemon) {
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = "Dex #: ${pokemon.nationalDexNumber}",
+                    text = stringResource(R.string.card_dex_number, pokemon.nationalDexNumber.toString()),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

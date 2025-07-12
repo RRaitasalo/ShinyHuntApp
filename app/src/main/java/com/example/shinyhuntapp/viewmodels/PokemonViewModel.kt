@@ -27,7 +27,7 @@ class PokemonViewModel(
     private val _pokemonList = MutableStateFlow<List<Pokemon>>(emptyList())
     val pokemonList: StateFlow<List<Pokemon>> = _pokemonList
 
-    fun getPokemonById(id: Int): Pokemon? {
+    fun getPokemonByIdDevToolsTest(id: Int): Pokemon? {
         viewModelScope.launch {
             try {
                 pokemonDao.getPokemonById(id)
@@ -37,6 +37,10 @@ class PokemonViewModel(
             }
         }
         return null
+    }
+
+    fun getPokemonById(id: Int?): Pokemon? {
+        return _pokemonList.value.find { it.id == id }
     }
 
     fun fetchPokemonList() {
@@ -115,7 +119,7 @@ class PokemonViewModel(
     }
 
     fun getPokemon(id: Int): Pokemon? {
-        return getPokemonById(id)
+        return getPokemonByIdDevToolsTest(id)
     }
 
 
