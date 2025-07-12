@@ -2,6 +2,7 @@ package com.example.shinyhuntapp.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.shinyhuntapp.data.PreferenceManager
 import com.example.shinyhuntapp.data.local.DatabaseProvider
@@ -21,5 +22,18 @@ class LoginViewModel(context: Context) : ViewModel() {
                 onFailure()
             }
         }
+    }
+
+    fun logout() {
+        preferences.clearLoggedInUserId()
+    }
+}
+
+class LoginViewModelFactory(
+    private val context: Context
+) : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return LoginViewModel(context) as T
     }
 }

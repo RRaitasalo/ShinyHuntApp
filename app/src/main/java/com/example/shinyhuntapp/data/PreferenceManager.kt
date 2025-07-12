@@ -15,6 +15,10 @@ class PreferenceManager(context: Context) {
         return prefs.getInt("user_id", -1)
     }
 
+    fun clearLoggedInUserId() {
+        prefs.edit { remove("user_id") }
+    }
+
     fun hasFetchedPokemon(): Boolean {
         return prefs.getBoolean("has_fetched_pokemon", false)
     }

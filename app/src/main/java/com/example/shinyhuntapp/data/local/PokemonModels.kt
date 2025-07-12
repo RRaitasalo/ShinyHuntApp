@@ -24,6 +24,14 @@ data class PokemonDetails(
 )
 
 data class Sprites(
+    @Json(name = "other") val other: OtherSprites,
+)
+
+data class OtherSprites(
+    @Json(name = "official-artwork") val officialArtwork: OfficialArtwork
+)
+
+data class OfficialArtwork(
     @Json(name = "front_default") val frontDefault: String?,
     @Json(name = "front_shiny") val frontShiny: String?
 )

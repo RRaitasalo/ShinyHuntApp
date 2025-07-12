@@ -107,8 +107,8 @@ class PokemonViewModel(
             nationalDexNumber = details.id,
             type1 = type1,
             type2 = type2,
-            spriteUrl = details.sprites.frontDefault ?: "",
-            shinySprite = details.sprites.frontShiny ?: ""
+            spriteUrl = details.sprites.other.officialArtwork.frontDefault ?: "",
+            shinySprite = details.sprites.other.officialArtwork.frontShiny ?: ""
         )
     }
 

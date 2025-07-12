@@ -46,7 +46,6 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
 
     // Trigger loading when the screen appears
     LaunchedEffect(Unit) {
-        viewModel.fetchAndStorePokemonIfNeeded()
         viewModel.fetchPokemonList()
     }
 
@@ -101,8 +100,8 @@ fun PokemonCard(navController: NavController, pokemon: Pokemon) {
         ) {
             AsyncImage(
                 model = pokemon.spriteUrl,
-                contentDescription = pokemon.name,
-                modifier = Modifier.size(64.dp)
+                contentDescription = stringResource(R.string.picture_of, pokemon.name),
+                modifier = Modifier.size(96.dp)
             )
 
             Spacer(modifier = Modifier.width(16.dp))

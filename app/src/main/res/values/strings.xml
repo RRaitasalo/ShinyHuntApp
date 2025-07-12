@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ShinyHuntApp</string>
-    <string name="main">Main</string>
 
     -- Login and Register--
     <string name="login">Login</string>
@@ -10,10 +9,16 @@
     <string name="register">Register</string>
     <string name="wrong_credentials">Wrong username or password</string>"
     <string name="username_already_in_use">Username already in use</string>
+    <string name="log_out">Log out</string>"
 
-    -- Pokemon List
+    -- Pokemon List --
     <string name="pokemon_list">Pokemon List</string>
     <string name="card_dex_number">Dex #: %1$s</string>"
+    <string name="picture_of">A picture of %1$s</string>
+
+    -- Pokemon Info Screen --
+    <string name="pokemon_info">Pokemon Info</string>
+    <string name="pokemonId">PokemonId</string>"
 
     -- Dev Tools --
     <string name="dev_tools">Developer Tools</string>
