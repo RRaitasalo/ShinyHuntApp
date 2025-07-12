@@ -1,5 +1,6 @@
 package com.example.shinyhuntapp.ui.screens
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,6 +33,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -43,10 +48,11 @@ import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel) {
 
     val pokemonList by viewModel.pokemonList.collectAsState()
+    val userPokemonMap by viewModel.userPokemonMap.collectAsState()
 
-    // Trigger loading when the screen appears
     LaunchedEffect(Unit) {
         viewModel.fetchPokemonList()
+        viewModel.fetchUserPokemon()
     }
 
 
@@ -76,14 +82,25 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                 .padding(innerPadding)
         ) {
             items(pokemonList) { pokemon ->
-                PokemonCard(navController, pokemon)
+                PokemonCard(
+                    navController = navController,
+                    pokemon = pokemon,
+                    onShinyToggle = { pokemon -> viewModel.toggleShinyStatus(pokemon.id)},
+                    hasCaughtShiny = userPokemonMap[pokemon.id]?.hasCaughtShiny == true
+
+                )
             }
         }
     }
 }
 
 @Composable
-fun PokemonCard(navController: NavController, pokemon: Pokemon) {
+fun PokemonCard(
+    navController: NavController,
+    pokemon: Pokemon,
+    onShinyToggle: (Pokemon) -> Unit,
+    hasCaughtShiny: Boolean
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -94,29 +111,42 @@ fun PokemonCard(navController: NavController, pokemon: Pokemon) {
             navController.navigate(Routes.pokemonInfoWithId(pokemon.id))
         }
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(16.dp)
-        ) {
-            AsyncImage(
-                model = pokemon.spriteUrl,
-                contentDescription = stringResource(R.string.picture_of, pokemon.name),
-                modifier = Modifier.size(96.dp)
-            )
-
-            Spacer(modifier = Modifier.width(16.dp))
-            Column {
-                Text(
-                    text = pokemon.name.replaceFirstChar { it.uppercase() },
-                    style = MaterialTheme.typography.titleMedium
+        Box {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(16.dp)
+            ) {
+                AsyncImage(
+                    model = pokemon.spriteUrl,
+                    contentDescription = stringResource(R.string.picture_of, pokemon.name),
+                    modifier = Modifier.size(96.dp)
                 )
-                Text(
-                    text = stringResource(R.string.card_dex_number, pokemon.nationalDexNumber.toString()),
-                    style = MaterialTheme.typography.bodyMedium
+
+                Spacer(modifier = Modifier.width(16.dp))
+                Column {
+                    Text(
+                        text = pokemon.name.replaceFirstChar { it.uppercase() },
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = stringResource(
+                            R.string.card_dex_number,
+                            pokemon.nationalDexNumber.toString()
+                        ),
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
+            IconButton(
+                onClick = { onShinyToggle(pokemon) },
+                modifier = Modifier.align(Alignment.TopEnd)
+            ) {
+                Icon(
+                    imageVector = if (hasCaughtShiny) Icons.Filled.Star else Icons.Outlined.Star,
+                    contentDescription = if (hasCaughtShiny) "Shiny caught" else "Mark as shiny caught",
+                    tint = if (hasCaughtShiny) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
             }
         }
-
     }
-
 }

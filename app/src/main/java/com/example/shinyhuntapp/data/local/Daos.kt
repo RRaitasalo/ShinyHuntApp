@@ -37,6 +37,13 @@ interface PokemonDao {
 
 @Dao
 interface UserPokemonDao {
+
+    @Query("SELECT * FROM user_pokemon WHERE userId = :userId AND pokemonId = :pokemonId")
+    suspend fun getUserPokemon(userId: Int, pokemonId: Int): UserPokemon?
+
+    @Query("SELECT * FROM user_pokemon WHERE userId = :userId")
+    suspend fun getAllUserPokemon(userId: Int): List<UserPokemon>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(userPokemon: UserPokemon)
 
@@ -45,6 +52,12 @@ interface UserPokemonDao {
 
     @Query("UPDATE user_pokemon SET hasCaughtShiny = :caught WHERE pokemonId = :pokemonId")
     suspend fun setCaughtShiny(pokemonId: Int, caught: Boolean)
+
+    @Update
+    suspend fun updateUserPokemon(userPokemon: UserPokemon)
+
+    @Delete
+    suspend fun deleteUserPokemon(userPokemon: UserPokemon)
 }
 
 @Dao

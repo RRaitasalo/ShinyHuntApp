@@ -47,7 +47,6 @@ fun MainScreen(navController: NavController, pokemonViewModel: PokemonViewModel,
         }
         Button(
             onClick = {
-                pokemonViewModel.clearPokemonTable()
                 loginViewModel.logout()
                 navController.navigate(Routes.LOGIN) {
                     popUpTo(Routes.MAIN) { inclusive = true }

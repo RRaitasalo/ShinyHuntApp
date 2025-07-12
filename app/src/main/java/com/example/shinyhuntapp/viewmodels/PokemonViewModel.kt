@@ -10,6 +10,7 @@ import com.example.shinyhuntapp.data.local.DatabaseProvider
 import com.example.shinyhuntapp.data.local.Pokemon
 import com.example.shinyhuntapp.data.local.PokemonDao
 import com.example.shinyhuntapp.data.local.PokemonDetails
+import com.example.shinyhuntapp.data.local.UserPokemon
 import com.example.shinyhuntapp.data.local.UserPokemonDao
 import com.example.shinyhuntapp.data.network.PokeApiService
 import com.example.shinyhuntapp.data.network.RetrofitInstance
@@ -27,6 +28,9 @@ class PokemonViewModel(
     private val _pokemonList = MutableStateFlow<List<Pokemon>>(emptyList())
     val pokemonList: StateFlow<List<Pokemon>> = _pokemonList
 
+    private val _userPokemonMap = MutableStateFlow<Map<Int, UserPokemon>>(emptyMap())
+    val userPokemonMap: StateFlow<Map<Int, UserPokemon>> = _userPokemonMap
+
     fun getPokemonByIdDevToolsTest(id: Int): Pokemon? {
         viewModelScope.launch {
             try {
@@ -39,9 +43,6 @@ class PokemonViewModel(
         return null
     }
 
-    /*fun getPokemonById(id: Int?): Pokemon? {
-        return _pokemonList.value.find { it.id == id }
-    }*/
     fun getPokemonById(id: Int, onResult: (Pokemon?) -> Unit) {
         viewModelScope.launch {
             try {
@@ -95,6 +96,59 @@ class PokemonViewModel(
 
             } catch (e: Exception) {
                 Log.e("PokemonViewModel", "Error fetching Pokémon", e)
+            }
+        }
+    }
+
+    fun fetchUserPokemon() {
+        viewModelScope.launch {
+            try {
+                val userId = preferences.getLoggedInUserId()
+                val userPokemonList = userPokemonDao.getAllUserPokemon(userId)
+                _userPokemonMap.value = userPokemonList.associateBy { it.pokemonId }
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error fetching user Pokemon", e)
+            }
+        }
+    }
+
+    fun toggleShinyStatus(pokemonId: Int) {
+        viewModelScope.launch {
+            try {
+                val userId = preferences.getLoggedInUserId()
+                val existingUserPokemon = userPokemonDao.getUserPokemon(userId, pokemonId)
+
+                if (existingUserPokemon == null) {
+
+                    val newUserPokemon = UserPokemon(
+                        pokemonId = pokemonId,
+                        userId = userId,
+                        hasCaughtShiny = true,
+                        caughtDate = null,
+                        caughtCount = 1,
+                        isFromHunt = false
+                    )
+                    userPokemonDao.insert(newUserPokemon)
+                } else {
+                    if (existingUserPokemon.hasCaughtShiny) {
+                        if (!existingUserPokemon.isFromHunt) {
+                            userPokemonDao.deleteUserPokemon(existingUserPokemon)
+                        } else {
+                            val updated = existingUserPokemon.copy(hasCaughtShiny = false)
+                            userPokemonDao.updateUserPokemon(updated)
+                        }
+                    } else {
+                        val updated = existingUserPokemon.copy(
+                            hasCaughtShiny = true,
+                            caughtDate = existingUserPokemon.caughtDate
+                        )
+                        userPokemonDao.updateUserPokemon(updated)
+                    }
+                }
+
+                fetchUserPokemon()
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error toggling shiny status", e)
             }
         }
     }

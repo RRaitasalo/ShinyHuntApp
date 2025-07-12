@@ -46,7 +46,8 @@ data class UserPokemon(
     val userId: Int,
     val hasCaughtShiny: Boolean,
     val caughtDate: Long? = null,
-    val caughtCount: Int = 0
+    val caughtCount: Int = 0,
+    val isFromHunt: Boolean = false
 )
 
 
