@@ -66,7 +66,6 @@ class PokemonViewModel(
                 val pokemonList = mutableListOf<Pokemon>()
 
                 for (entry in entries) {
-                    Log.d("PokemonViewModel", "Fetching details for ${entry.name}")
                     val url = entry.url
                     val details = api.getPokemonDetailsByUrl(url)
                     val pokemon = mapToPokemon(details)
@@ -92,7 +91,9 @@ class PokemonViewModel(
             name = details.name.replaceFirstChar { it.uppercase() },
             nationalDexNumber = details.id,
             type1 = type1,
-            type2 = type2
+            type2 = type2,
+            spriteUrl = details.sprites.frontDefault ?: "",
+            shinySprite = details.sprites.frontShiny ?: ""
         )
     }
 

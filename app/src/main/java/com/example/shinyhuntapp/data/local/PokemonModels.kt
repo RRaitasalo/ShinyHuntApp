@@ -18,8 +18,16 @@ data class PokemonDetails(
     @Json(name = "id")
     val id: Int,
     @Json(name = "types")
-    val types: List<TypeSlot>
+    val types: List<TypeSlot>,
+    @Json(name = "sprites")
+    val sprites: Sprites
 )
+
+data class Sprites(
+    @Json(name = "front_default") val frontDefault: String?,
+    @Json(name = "front_shiny") val frontShiny: String?
+)
+
 
 data class TypeSlot(
     val slot: Int,

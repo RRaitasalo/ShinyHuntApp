@@ -18,8 +18,8 @@ data class Pokemon(
     val nationalDexNumber: Int,
     val type1: String,
     val type2: String?,
-    val spriteUrl: String? = null,
-    val shinySprite: String? = null
+    val spriteUrl: String,
+    val shinySprite: String
 )
 
 @Entity(

@@ -14,9 +14,8 @@ interface PokeApiService {
     ): PokemonListResponse
 
     @GET
-    suspend fun getPokemonDetailsByUrl(
-        @Url url: String
-    ): PokemonDetails
+    suspend fun getPokemonDetailsByUrl(@Url url: String): PokemonDetails
+
 
 
 
