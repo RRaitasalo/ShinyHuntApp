@@ -48,6 +48,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -80,6 +81,8 @@ fun HuntScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
+    val huntSavedMessage = stringResource(R.string.hunt_saved)
+
     val currentRoute = Routes.huntWithPokemonId(pokemonId)
 
     LaunchedEffect(pokemonId) {
@@ -91,7 +94,7 @@ fun HuntScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Shiny Hunt",
+                        text = stringResource(R.string.shiny_hunt),
                         style = MaterialTheme.typography.headlineMedium
                     )
                 },
@@ -107,7 +110,7 @@ fun HuntScreen(
                     IconButton(onClick = { showSettingsDialog = true }) {
                         Icon(
                             imageVector = Icons.Default.Settings,
-                            contentDescription = "Hunt Settings"
+                            contentDescription = stringResource(R.string.hunt_settings)
                         )
                     }
                 }
@@ -137,7 +140,7 @@ fun HuntScreen(
                     ) {
                         AsyncImage(
                             model = pokemon.spriteUrl,
-                            contentDescription = "Picture of ${pokemon.name}",
+                            contentDescription = stringResource(R.string.picture_of, pokemon.name),
                             modifier = Modifier.size(120.dp)
                         )
 
@@ -150,13 +153,13 @@ fun HuntScreen(
                         )
 
                         Text(
-                            text = "National Dex #${pokemon.nationalDexNumber}",
+                            text = stringResource(R.string.card_dex_number, pokemon.nationalDexNumber),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                         )
 
                         Text(
-                            text = "Method: ${huntMethod.displayName}",
+                            text = stringResource(R.string.hunt_method, huntMethod.displayName),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                         )
@@ -175,7 +178,7 @@ fun HuntScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "Encounters",
+                            text = stringResource(R.string.encounters),
                             style = MaterialTheme.typography.titleLarge,
                             color = MaterialTheme.colorScheme.primary
                         )
@@ -197,7 +200,7 @@ fun HuntScreen(
                             modifier = Modifier.padding(bottom = 16.dp)
                         ) {
                             Text(
-                                text = "Add: ",
+                                text = stringResource(R.string.add),
                                 style = MaterialTheme.typography.bodyMedium
                             )
 
@@ -218,7 +221,7 @@ fun HuntScreen(
                                 FilterChip(
                                     onClick = { showCustomDialog = true },
                                     label = {
-                                        Text(if (isCustomAmount) incrementAmount.toString() else "Custom")
+                                        Text(if (isCustomAmount) incrementAmount.toString() else stringResource(R.string.custom))
                                     },
                                     selected = isCustomAmount,
                                     modifier = Modifier.height(32.dp)
@@ -242,7 +245,11 @@ fun HuntScreen(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Add $incrementAmount Encounter${if (incrementAmount > 1) "s" else ""}",
+                                text = pluralStringResource(
+                                    R.plurals.add_encounters,
+                                    incrementAmount,
+                                    incrementAmount
+                                ),
                                 style = MaterialTheme.typography.titleMedium
                             )
                         }
@@ -258,7 +265,7 @@ fun HuntScreen(
                         onClick = {
                             huntViewModel.saveHunt()
                             coroutineScope.launch {
-                                snackbarHostState.showSnackbar("Hunt Saved")
+                                snackbarHostState.showSnackbar(huntSavedMessage)
                             }
                           },
                         modifier = Modifier
@@ -271,7 +278,7 @@ fun HuntScreen(
                             modifier = Modifier.size(20.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Save Hunt")
+                        Text(stringResource(R.string.save_hunt))
                     }
 
                     // Complete Hunt Button
@@ -290,7 +297,7 @@ fun HuntScreen(
                             modifier = Modifier.size(20.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Complete!")
+                        Text(stringResource(R.string.complete_hunt))
                     }
                 }
             }
@@ -325,9 +332,9 @@ fun HuntScreen(
     if (showCompleteDialog) {
         AlertDialog(
             onDismissRequest = { showCompleteDialog = false },
-            title = { Text("Complete Hunt") },
+            title = { Text(stringResource(R.string.complete_hunt)) },
             text = {
-                Text("Congratulations! You caught a shiny ${currentPokemon?.name}!\n\nThis will mark the hunt as complete and add the shiny to your collection.")
+                Text(stringResource(R.string.complete_hunt_message, currentPokemon?.name ?: stringResource(R.string.unknown)))
             },
             confirmButton = {
                 Button(
@@ -340,12 +347,12 @@ fun HuntScreen(
                         }
                     }
                 ) {
-                    Text("Complete Hunt")
+                    Text(stringResource(R.string.complete_hunt))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showCompleteDialog = false }) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         )
@@ -366,7 +373,7 @@ fun HuntSettingsDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Hunt Settings") },
+        title = { Text(stringResource(R.string.hunt_settings)) },
         text = {
             Column {
 
@@ -380,7 +387,7 @@ fun HuntSettingsDialog(
                         value = huntMethod.displayName,
                         onValueChange = { },
                         readOnly = true,
-                        label = { Text("Hunt Method") },
+                        label = { Text(stringResource(R.string.hunt_method)) },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                         modifier = Modifier
                             .fillMaxWidth()
@@ -409,12 +416,12 @@ fun HuntSettingsDialog(
         },
         confirmButton = {
             Button(onClick = onSave) {
-                Text("Save")
+                Text(stringResource(R.string.save))
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel")
+                Text(stringResource(R.string.cancel))
             }
         }
     )
@@ -431,11 +438,11 @@ fun CustomAmountDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Custom Increment Amount") },
+        title = { Text(stringResource(R.string.custom_increment_amount)) },
         text = {
             Column {
                 Text(
-                    text = "Enter how much to add with each button press:",
+                    text = stringResource(R.string.enter_custom_amount),
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
@@ -447,12 +454,12 @@ fun CustomAmountDialog(
                         isError =
                             newValue.toIntOrNull() == null || (newValue.toIntOrNull() ?: 0) <= 0
                     },
-                    label = { Text("Amount") },
-                    placeholder = { Text("Enter number") },
+                    label = { Text(stringResource(R.string.amount)) },
+                    placeholder = { Text(stringResource(R.string.enter_number)) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     isError = isError,
                     supportingText = if (isError) {
-                        { Text("Please enter a valid number greater than 0") }
+                        { Text(stringResource(R.string.please_enter_valid_number)) }
                     } else null,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -468,12 +475,12 @@ fun CustomAmountDialog(
                 },
                 enabled = !isError && textValue.isNotBlank()
             ) {
-                Text("OK")
+                Text(stringResource(R.string.ok))
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel")
+                Text(stringResource(R.string.cancel))
             }
         }
     )

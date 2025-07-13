@@ -15,7 +15,7 @@
 
     -- Pokemon List --
     <string name="pokemon_list">Pokemon List</string>
-    <string name="card_dex_number">Dex #: %1$s</string>"
+    <string name="card_dex_number">Dex #: %1$s</string>
     <string name="picture_of">A picture of %1$s</string>
     <string name="shiny_caught">Shiny caught</string>
     <string name="mark_as_shiny_caught">Mark as shiny caught</string>
@@ -32,9 +32,35 @@
     <string name="fetch_one_pokemon">Fetch One Pokemon (Should Fix App Inspection)</string>
 
     -- Buttons --
-    <string name="back">Back</string>"
+    <string name="back">Back</string>
+    <string name="settings">Settings</string>
+    <string name="unknown">Unknown</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="ok">OK</string>
 
     -- Hunt --
-    <string name="hunt">Hunt</string>"
+    <string name="hunt">Hunt</string>
+    <string name="save_hunt">Save Hunt</string>
+    <string name="hunt_saved">Hunt Saved</string>
+    <string name="complete_hunt">Complete Hunt</string>
+    <string name="shiny_hunt">Shiny Hunt</string>
+    <string name="hunt_settings">Hunt Settings</string>
+    <string name="hunt_method">Method: %1$s</string>
+    <string name="encounters">Encounters</string>
+    <string name="add">Add: </string>
+    <string name="custom">Custom</string>
+    <string name="complete_hunt_message">Congratulations! You caught a shiny %1$s!\n\nThis will mark the hunt as complete and add the shiny to your collection.</string>
+    <string name="custom_increment_amount">Custom Increment Amount</string>
+    <string name="enter_custom_amount">Enter how much to add with each button press:</string>
+    <string name="amount">Amount</string>
+    <string name="enter_number">Enter Number</string>
+    <string name="please_enter_valid_number">Please enter a valid number greater than 0</string>
+
+
+    <plurals name="add_encounters">
+        <item quantity="one">Add %1$d Encounter</item>
+        <item quantity="other">Add %1$d Encounters</item>
+    </plurals>
 
 </resources>
