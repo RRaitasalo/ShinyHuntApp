@@ -34,4 +34,7 @@
     -- Buttons --
     <string name="back">Back</string>"
 
+    -- Hunt --
+    <string name="hunt">Hunt</string>"
+
 </resources>

@@ -90,12 +90,11 @@ data class Game(
     indices = [Index("pokemonId"), Index("userId")]
 )
 data class Hunt(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val pokemonId: Int,
     val userId: Int,
-    val method: String,
-    val encounters: Int,
-    val huntMethod: HuntMethod,
+    val encounters: Int = 0,
+    val method: HuntMethod,
     val startDate: Long = System.currentTimeMillis(),
     val endDate: Long? = null,
     val isFoundShiny: Boolean = false

@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,12 +17,15 @@ import androidx.navigation.navArgument
 import com.example.shinyhuntapp.data.PreferenceManager
 import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.ui.screens.DevToolsScreen
+import com.example.shinyhuntapp.ui.screens.HuntScreen
 import com.example.shinyhuntapp.ui.screens.LoginScreen
 import com.example.shinyhuntapp.ui.screens.MainScreen
 import com.example.shinyhuntapp.ui.screens.PokemonInfoScreen
 import com.example.shinyhuntapp.ui.screens.PokemonListScreen
 import com.example.shinyhuntapp.ui.screens.RegisterScreen
 import com.example.shinyhuntapp.ui.theme.ShinyHuntAppTheme
+import com.example.shinyhuntapp.viewmodels.HuntViewModel
+import com.example.shinyhuntapp.viewmodels.HuntViewModelFactory
 import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import com.example.shinyhuntapp.viewmodels.LoginViewModelFactory
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
@@ -75,6 +79,16 @@ class MainActivity : ComponentActivity() {
             ) { backStackEntry ->
                 val pokemonId = backStackEntry.arguments?.getInt(pokemonIdString) ?: -1
                 PokemonInfoScreen(navController, pokemonId, pokemonViewModel)
+            }
+            composable(
+                route = "hunt/{pokemonId}",
+                arguments = listOf(navArgument("pokemonId") { type = NavType.IntType })
+            ) { backStackEntry ->
+                val pokemonId = backStackEntry.arguments?.getInt("pokemonId") ?: 0
+                val huntViewModel: HuntViewModel = viewModel(
+                    factory = HuntViewModelFactory(this@MainActivity)
+                )
+                HuntScreen(navController, pokemonId, huntViewModel)
             }
         }
     }

@@ -56,5 +56,11 @@ fun MainScreen(navController: NavController, pokemonViewModel: PokemonViewModel,
         ) {
             Text(stringResource(R.string.log_out))
         }
+        Button(
+            onClick = { navController.navigate(Routes.HUNT) },
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(stringResource(R.string.hunt))
+        }
     }
 }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -23,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.Pokemon
+import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 
@@ -64,6 +66,11 @@ fun PokemonInfoScreen(navController: NavController, pokemonId: Int, viewModel: P
             Text(text = "Pokémon Information")
             Text(text = "Name: ${pokemon?.name}")
             Text(text = "National Dex Number: ${pokemon?.nationalDexNumber}")
+            Button(
+                onClick = { navController.navigate(Routes.huntWithPokemonId(pokemonId)) }
+            ) {
+                Text(text = "Start Hunt")
+            }
         }
     }
 }

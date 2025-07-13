@@ -79,7 +79,7 @@ interface HuntDao {
     suspend fun deleteHunt(hunt: Hunt)
 
     @Query("SELECT * FROM hunts WHERE userId = :userId AND pokemonId = :pokemonId")
-    suspend fun getHuntsByUserAndPokemon(userId: Int, pokemonId: Int): List<Hunt>
+    suspend fun getHuntByUserAndPokemon(userId: Int, pokemonId: Int): Hunt?
 
     @Query("SELECT * FROM hunts WHERE id = :huntId")
     suspend fun getHuntById(huntId: Long): Hunt?

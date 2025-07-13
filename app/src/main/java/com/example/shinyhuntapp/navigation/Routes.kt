@@ -7,6 +7,8 @@ object Routes {
     const val POKEMON_LIST = "pokemon_list"
     const val DEV_TOOLS = "dev_tools"
     const val POKEMON_INFO = "pokemon_info"
+    const val HUNT = "hunt"
 
     fun pokemonInfoWithId(pokemonId: Int) = "$POKEMON_INFO/$pokemonId"
+    fun huntWithPokemonId(pokemonId: Int) = "$HUNT/$pokemonId"
 }
