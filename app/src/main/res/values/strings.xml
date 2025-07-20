@@ -57,6 +57,9 @@
     <string name="enter_number">Enter Number</string>
     <string name="please_enter_valid_number">Please enter a valid number greater than 0</string>
 
+    -- MainHunt --
+    <string name="your_hunts">Your Hunts</string>
+
 
     <plurals name="add_encounters">
         <item quantity="one">Add %1$d Encounter</item>

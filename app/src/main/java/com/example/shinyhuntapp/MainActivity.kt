@@ -19,6 +19,7 @@ import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.ui.screens.DevToolsScreen
 import com.example.shinyhuntapp.ui.screens.HuntScreen
 import com.example.shinyhuntapp.ui.screens.LoginScreen
+import com.example.shinyhuntapp.ui.screens.MainHuntScreen
 import com.example.shinyhuntapp.ui.screens.MainScreen
 import com.example.shinyhuntapp.ui.screens.PokemonInfoScreen
 import com.example.shinyhuntapp.ui.screens.PokemonListScreen
@@ -35,6 +36,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var pokemonViewModel: PokemonViewModel
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var huntViewModel: HuntViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +51,11 @@ class MainActivity : ComponentActivity() {
             this,
             LoginViewModelFactory(applicationContext)
         )[LoginViewModel::class.java]
+
+        huntViewModel = ViewModelProvider(
+            this,
+            HuntViewModelFactory(applicationContext)
+        )[HuntViewModel::class.java]
 
         setContent {
             ShinyHuntAppTheme {
@@ -81,15 +88,13 @@ class MainActivity : ComponentActivity() {
                 PokemonInfoScreen(navController, pokemonId, pokemonViewModel)
             }
             composable(
-                route = "hunt/{pokemonId}",
-                arguments = listOf(navArgument("pokemonId") { type = NavType.IntType })
+                route = "${Routes.HUNT}/{$pokemonIdString}",
+                arguments = listOf(navArgument(pokemonIdString) { type = NavType.IntType })
             ) { backStackEntry ->
-                val pokemonId = backStackEntry.arguments?.getInt("pokemonId") ?: 0
-                val huntViewModel: HuntViewModel = viewModel(
-                    factory = HuntViewModelFactory(this@MainActivity)
-                )
+                val pokemonId = backStackEntry.arguments?.getInt(pokemonIdString) ?: -1
                 HuntScreen(navController, pokemonId, huntViewModel)
             }
+            composable(Routes.HUNT) { MainHuntScreen(navController, huntViewModel) }
         }
     }
 }
