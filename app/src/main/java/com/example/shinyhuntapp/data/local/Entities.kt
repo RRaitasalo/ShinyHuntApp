@@ -2,6 +2,7 @@ package com.example.shinyhuntapp.data.local
 
 import androidx.room.*
 import com.example.shinyhuntapp.data.local.HuntMethod
+import com.google.gson.Gson
 
 class Converters {
     @TypeConverter
@@ -12,6 +13,16 @@ class Converters {
     @TypeConverter
     fun toHuntMethod(displayName: String): HuntMethod {
         return HuntMethod.fromDisplayName(displayName) ?: HuntMethod.RANDOM_ENCOUNTER
+    }
+
+    @TypeConverter
+    fun fromPokemon(pokemon: Pokemon): String {
+        return Gson().toJson(pokemon)
+    }
+
+    @TypeConverter
+    fun toPokemon(pokemonJson: String): Pokemon {
+        return Gson().fromJson(pokemonJson, Pokemon::class.java)
     }
 }
 
@@ -93,6 +104,7 @@ data class Hunt(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val pokemonId: Int,
     val userId: Int,
+    val pokemon: Pokemon,
     val encounters: Int = 0,
     val method: HuntMethod,
     val startDate: Long = System.currentTimeMillis(),

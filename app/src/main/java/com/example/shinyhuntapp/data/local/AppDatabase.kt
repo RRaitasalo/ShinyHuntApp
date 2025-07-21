@@ -12,7 +12,7 @@ import androidx.room.TypeConverters
         Game::class,
         Hunt::class
         ],
-    version = 8
+    version = 9
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

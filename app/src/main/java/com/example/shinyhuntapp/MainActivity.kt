@@ -94,7 +94,7 @@ class MainActivity : ComponentActivity() {
                 val pokemonId = backStackEntry.arguments?.getInt(pokemonIdString) ?: -1
                 HuntScreen(navController, pokemonId, huntViewModel)
             }
-            composable(Routes.HUNT) { MainHuntScreen(navController, huntViewModel) }
+            composable(Routes.HUNT) { MainHuntScreen(navController, huntViewModel, pokemonViewModel) }
         }
     }
 }

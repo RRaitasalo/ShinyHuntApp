@@ -43,6 +43,9 @@ class HuntViewModel(
     private val _huntMethod = MutableStateFlow<HuntMethod>(HuntMethod.RANDOM_ENCOUNTER)
     val huntMethod: StateFlow<HuntMethod> = _huntMethod
 
+    private val _allHunts = MutableStateFlow<List<Hunt>>(emptyList())
+    val allHunts: StateFlow<List<Hunt>> = _allHunts
+
     fun setIncrementAmount(amount: Int) {
         _incrementAmount.value = amount
 
@@ -76,6 +79,7 @@ class HuntViewModel(
                     } else {
                         val newHunt = Hunt(
                             pokemonId = pokemonId,
+                            pokemon = pokemon,
                             userId = userId,
                             method = _huntMethod.value,
                         )
@@ -88,23 +92,6 @@ class HuntViewModel(
                 }
             } catch (e: Exception) {
                 Log.e("HuntViewModel", "Error starting hunt", e)
-            }
-        }
-    }
-
-    fun loadHunt(huntId: Long) {
-        viewModelScope.launch {
-            try {
-                val hunt = huntDao.getHuntById(huntId)
-                if (hunt != null) {
-                    val pokemon = pokemonDao.getPokemonById(hunt.pokemonId)
-                    _currentHunt.value = hunt
-                    _currentPokemon.value = pokemon
-                    _encounters.value = hunt.encounters
-                    _huntMethod.value = hunt.method
-                }
-            } catch (e: Exception) {
-                Log.e("HuntViewModel", "Error loading hunt", e)
             }
         }
     }
@@ -184,6 +171,18 @@ class HuntViewModel(
                 onSuccess()
             } catch (e: Exception) {
                 Log.e("HuntViewModel", "Error completing hunt", e)
+            }
+        }
+    }
+
+    fun getAllHunts() {
+        viewModelScope.launch {
+            try {
+                val userId = preferences.getLoggedInUserId()
+                val allHunts = huntDao.getAllHunts(userId)
+                _allHunts.value = allHunts
+            } catch (e: Exception) {
+                Log.e("HuntViewModel", "Error getting all hunts", e)
             }
         }
     }
