@@ -46,6 +46,9 @@ class HuntViewModel(
     private val _allHunts = MutableStateFlow<List<Hunt>>(emptyList())
     val allHunts: StateFlow<List<Hunt>> = _allHunts
 
+    private val _huntForPokemon = MutableStateFlow<Hunt?>(null)
+    val huntForPokemon: StateFlow<Hunt?> = _huntForPokemon
+
     fun setIncrementAmount(amount: Int) {
         _incrementAmount.value = amount
 
@@ -183,6 +186,18 @@ class HuntViewModel(
                 _allHunts.value = allHunts
             } catch (e: Exception) {
                 Log.e("HuntViewModel", "Error getting all hunts", e)
+            }
+        }
+    }
+
+    fun getHuntForPokemon(pokemonId: Int) {
+        viewModelScope.launch {
+            try {
+                val userId = preferences.getLoggedInUserId()
+                val hunt = huntDao.getHuntByUserAndPokemon(userId, pokemonId)
+                _huntForPokemon.value = hunt
+            } catch (e: Exception) {
+                Log.e("HuntViewModel", "Error getting hunt for pokemon", e)
             }
         }
     }

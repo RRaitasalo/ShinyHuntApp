@@ -85,7 +85,7 @@ class MainActivity : ComponentActivity() {
                 arguments = listOf(navArgument(pokemonIdString) { type = NavType.IntType })
             ) { backStackEntry ->
                 val pokemonId = backStackEntry.arguments?.getInt(pokemonIdString) ?: -1
-                PokemonInfoScreen(navController, pokemonId, pokemonViewModel)
+                PokemonInfoScreen(navController, pokemonId, pokemonViewModel, huntViewModel)
             }
             composable(
                 route = "${Routes.HUNT}/{$pokemonIdString}",

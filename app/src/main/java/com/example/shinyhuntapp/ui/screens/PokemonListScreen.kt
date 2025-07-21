@@ -86,8 +86,8 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                     navController = navController,
                     pokemon = pokemon,
                     onShinyToggle = { pokemon -> viewModel.toggleShinyStatus(pokemon.id)},
-                    hasCaughtShiny = userPokemonMap[pokemon.id]?.hasCaughtShiny == true
-
+                    hasCaughtShiny = userPokemonMap[pokemon.id]?.hasCaughtShiny == true,
+                    hasCaughtShinyWithHunt = userPokemonMap[pokemon.id]?.caughtDate != null
                 )
             }
         }
@@ -99,7 +99,8 @@ fun PokemonCard(
     navController: NavController,
     pokemon: Pokemon,
     onShinyToggle: (Pokemon) -> Unit,
-    hasCaughtShiny: Boolean
+    hasCaughtShiny: Boolean,
+    hasCaughtShinyWithHunt: Boolean
 ) {
     Card(
         modifier = Modifier
@@ -137,15 +138,17 @@ fun PokemonCard(
                     )
                 }
             }
-            IconButton(
-                onClick = { onShinyToggle(pokemon) },
-                modifier = Modifier.align(Alignment.TopEnd)
-            ) {
-                Icon(
-                    imageVector = if (hasCaughtShiny) Icons.Filled.Star else Icons.Outlined.Star,
-                    contentDescription = if (hasCaughtShiny) stringResource(R.string.shiny_caught) else stringResource(R.string.mark_as_shiny_caught),
-                    tint = if (hasCaughtShiny) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                )
+            if (!hasCaughtShinyWithHunt) {
+                IconButton(
+                    onClick = { onShinyToggle(pokemon) },
+                    modifier = Modifier.align(Alignment.TopEnd)
+                ) {
+                    Icon(
+                        imageVector = if (hasCaughtShiny) Icons.Filled.Star else Icons.Outlined.Star,
+                        contentDescription = if (hasCaughtShiny) stringResource(R.string.shiny_caught) else stringResource(R.string.mark_as_shiny_caught),
+                        tint = if (hasCaughtShiny) Color(0xFFFFD700) else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                }
             }
         }
     }
