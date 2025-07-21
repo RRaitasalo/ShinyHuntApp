@@ -67,7 +67,8 @@ fun MainHuntScreen(
     val pokemonList by pokemonViewModel.pokemonList.collectAsState()
     val allHunts by huntViewModel.allHunts.collectAsState()
     val recentHunts = allHunts.filter { it.endDate != null }.sortedByDescending { it.endDate }
-    val ongoingHunts = allHunts.filter { it.endDate == null }.sortedByDescending { it.startDate }
+    val ongoingHunts = allHunts.filter { it.endDate == null }.sortedBy { it.startDate }
+    val huntsShown = 3
 
     var showPokemonSelector by remember { mutableStateOf(false) }
 
@@ -102,19 +103,28 @@ fun MainHuntScreen(
                 .padding(paddingValues)
         ) {
             HuntSection(
-                title = "Recent Hunts",
-                hunts = recentHunts.take(3)
+                title = stringResource(R.string.recent_hunts),
+                hunts = recentHunts.take(huntsShown)
             )
             HuntSection(
-                title = "Ongoing Hunts",
-                hunts = ongoingHunts.take(3)
+                title = stringResource(R.string.ongoing_hunts),
+                hunts = ongoingHunts.take(huntsShown)
             )
-
-            Button(
-                onClick = { showPokemonSelector = true },
-                modifier = Modifier.padding(16.dp)
+            Row(
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
             ) {
-                Text("Start a new hunt")
+                Button(
+                    onClick = { showPokemonSelector = true },
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(64.dp)
+                ) {
+                    Text(stringResource(R.string.start_new_hunt))
+                }
             }
         }
     }
@@ -153,7 +163,7 @@ private fun HuntSection(
                 )
             ) {
                 Text(
-                    text = "No hunts yet",
+                    text = stringResource(R.string.no_hunts_yet),
                     modifier = Modifier.padding(24.dp),
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Center,
@@ -209,7 +219,7 @@ private fun HuntCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Encounters:",
+                    text = stringResource(R.string.encounters),
                     style = MaterialTheme.typography.bodySmall,
                 )
                 Spacer(modifier = Modifier.width(4.dp))
@@ -226,7 +236,7 @@ private fun HuntCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = if (hunt.isFoundShiny) "Completed:" else "Ongoing",
+                    text = if (hunt.isFoundShiny) stringResource(R.string.completed) else stringResource(R.string.ongoing),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Medium,
                     color = if (hunt.isFoundShiny) {
@@ -243,7 +253,7 @@ private fun HuntCard(
                 text = if (hunt.isFoundShiny) {
                     "${hunt.endDate?.toDateString()}"
                 } else {
-                    "Started: \n${hunt.startDate.toDateString()}"
+                    "${stringResource(R.string.started)} \n${hunt.startDate.toDateString()}"
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -261,9 +271,7 @@ private fun PokemonSelectorDialog(
     pokemonList: List<Pokemon>
 ) {
     var searchQuery by remember { mutableStateOf("") }
-
     val allPokemon = pokemonList
-    Log.d("PokemonSelectorDialog", "Pokemon list size: ${allPokemon.size}")
 
     val filteredPokemon = remember(searchQuery) {
         if (searchQuery.isBlank()) {
@@ -271,7 +279,7 @@ private fun PokemonSelectorDialog(
         } else {
             allPokemon.filter { pokemon ->
                 pokemon.name.contains(searchQuery, ignoreCase = true) ||
-                pokemon.nationalDexNumber.toString().contains(searchQuery, ignoreCase = true)
+                        pokemon.nationalDexNumber.toString().contains(searchQuery, ignoreCase = true)
             }
         }
     }
@@ -280,13 +288,13 @@ private fun PokemonSelectorDialog(
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            Text(text = "Select a Pokemon")
+            Text(text = stringResource(R.string.select_pokemon))
             Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                placeholder = { Text("Search Pokemon") },
+                placeholder = { Text(stringResource(R.string.search_pokemon)) },
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -333,7 +341,7 @@ private fun PokemonListItem(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "#${pokemon.id}",
+                        text = stringResource(R.string.pokemon_id_format, pokemon.id),
                         fontSize = 10.sp
                     )
                 }

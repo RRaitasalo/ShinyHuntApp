@@ -59,6 +59,17 @@
 
     -- MainHunt --
     <string name="your_hunts">Your Hunts</string>
+    <string name="recent_hunts">Recent Hunts</string>
+    <string name="ongoing_hunts">Ongoing Hunts</string>
+    <string name="start_new_hunt">Start a new hunt</string>
+    <string name="no_hunts_yet">No hunts yet</string>
+    <string name="encountersColon">Encounters:</string>
+    <string name="completed">Completed:</string>
+    <string name="ongoing">Ongoing</string>
+    <string name="started">Started:</string>
+    <string name="select_pokemon">Select a Pokemon</string>
+    <string name="search_pokemon">Search Pokemon</string>
+    <string name="pokemon_id_format">#%1$d</string>
 
 
     <plurals name="add_encounters">
