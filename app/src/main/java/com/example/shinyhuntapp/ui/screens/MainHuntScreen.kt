@@ -99,10 +99,12 @@ fun MainHuntScreen(
                 .padding(paddingValues)
         ) {
             HuntSection(
+                navController = navController,
                 title = stringResource(R.string.recent_hunts),
                 hunts = recentHunts.take(huntsShown)
             )
             HuntSection(
+                navController = navController,
                 title = stringResource(R.string.ongoing_hunts),
                 hunts = ongoingHunts.take(huntsShown)
             )
@@ -139,6 +141,7 @@ fun MainHuntScreen(
 
 @Composable
 private fun HuntSection(
+    navController: NavController,
     title: String,
     hunts: List<Hunt>
 ) {
@@ -173,6 +176,7 @@ private fun HuntSection(
             ) {
                 hunts.forEach { hunt ->
                     HuntCard(
+                        navController = navController,
                         hunt = hunt,
                         modifier = Modifier.weight(1f)
                     )

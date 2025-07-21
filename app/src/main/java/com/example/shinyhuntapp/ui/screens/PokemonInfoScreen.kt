@@ -85,6 +85,7 @@ fun PokemonInfoScreen(
             if (hunt != null) {
                 Text(text = "Hunt Information")
                 HuntCard(
+                    navController = navController,
                     hunt = hunt!!,
                     modifier = Modifier.padding(16.dp)
                 )

@@ -38,6 +38,8 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="ok">OK</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 
     -- Hunt --
     <string name="hunt">Hunt</string>
