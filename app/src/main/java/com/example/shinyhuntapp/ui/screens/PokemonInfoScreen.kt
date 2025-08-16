@@ -78,7 +78,10 @@ fun PokemonInfoScreen(
             Text(text = "Name: ${pokemon?.name}")
             Text(text = "National Dex Number: ${pokemon?.nationalDexNumber}")
             Button(
-                onClick = { navController.navigate(Routes.huntWithPokemonId(pokemonId)) }
+                onClick = {
+                    huntViewModel.startNewHunt(pokemonId)
+                    navController.navigate(Routes.huntWithPokemonId(pokemonId))
+                }
             ) {
                 Text(text = "Start Hunt")
             }
