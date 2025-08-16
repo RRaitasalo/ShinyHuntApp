@@ -171,7 +171,9 @@ class PokemonViewModelFactory(
         val preferenceManager = PreferenceManager(context)
         val pokemonDao = db.pokemonDao()
         val userPokemonDao = db.userPokemonDao()
-        val repository = PokemonRepository(context, pokemonDao)
+        val gameDao = db.gameDao()
+        val gameAvailabilityDao = db.gameAvailabilityDao()
+        val repository = PokemonRepository(context, pokemonDao, gameDao, gameAvailabilityDao)
 
         return PokemonViewModel(repository, userPokemonDao, preferenceManager) as T
     }

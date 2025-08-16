@@ -1,8 +1,12 @@
 package com.example.shinyhuntapp.data.local.repository
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.example.shinyhuntapp.data.local.DataBundle
+import com.example.shinyhuntapp.data.local.GameAvailabilityDao
+import com.example.shinyhuntapp.data.local.GameDao
 import com.example.shinyhuntapp.data.local.Pokemon
 import com.example.shinyhuntapp.data.local.PokemonDao
 import com.example.shinyhuntapp.tools.DataBundleCreator
@@ -13,8 +17,11 @@ import kotlinx.coroutines.withContext
 class PokemonRepository(
     private val context: Context,
     private val pokemonDao: PokemonDao,
+    private val gameDao: GameDao,
+    private val gameAvailabilityDao: GameAvailabilityDao
 ) {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     suspend fun initializePokemonData(): Boolean = withContext(Dispatchers.IO) {
         try {
             if (pokemonDao.getPokemonCount() > 0) {
@@ -38,7 +45,7 @@ class PokemonRepository(
 
     private suspend fun loadFromJsonBundle(): Boolean {
         return try {
-            val jsonString = context.assets.open("pokemon_bundle_v1.json")
+            val jsonString = context.assets.open("pokemon_bundle_v2.json")
                 .bufferedReader().use { it.readText() }
             val bundle = Gson().fromJson(jsonString, DataBundle::class.java)
 
@@ -53,6 +60,7 @@ class PokemonRepository(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private suspend fun loadFromApiFallback(): Boolean {
         return try {
             val creator = DataBundleCreator()

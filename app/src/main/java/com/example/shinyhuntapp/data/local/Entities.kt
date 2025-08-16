@@ -25,7 +25,6 @@ class Converters {
     }
 }
 
-// User entity for account information
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
@@ -33,7 +32,6 @@ data class User(
     val password: String //Needs to be hashed later
 )
 
-// Pokémon entity for basic Pokémon information
 @Entity(tableName = "pokemon")
 data class Pokemon(
     @PrimaryKey val id: Int,
@@ -74,11 +72,42 @@ data class UserPokemon(
 )
 
 
-// Game entity for Pokémon games
 @Entity(tableName = "games")
 data class Game(
-    @PrimaryKey val id: Int,
-    val name: String
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val name: String,
+    val generation: Int? = null,
+    val region: String? = null
+)
+
+@Entity(
+    tableName = "game_availability",
+    foreignKeys = [
+        ForeignKey(
+            entity = Pokemon::class,
+            parentColumns = ["id"],
+            childColumns = ["pokemonId"],
+            onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = Game::class,
+            parentColumns = ["id"],
+            childColumns = ["gameId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ],
+    indices = [
+        Index(value = ["pokemonId"]),
+        Index(value = ["gameId"]),
+        Index(value = ["pokemonId", "gameId"], unique = true)
+    ]
+)
+data class GameAvailability(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val pokemonId: Int,
+    val gameId: Int,
+    val locations: String,
+    val obtainMethod: String
 )
 
 @Entity(

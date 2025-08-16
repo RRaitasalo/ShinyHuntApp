@@ -10,9 +10,10 @@ import androidx.room.TypeConverters
         Pokemon::class,
         UserPokemon::class,
         Game::class,
-        Hunt::class
+        Hunt::class,
+        GameAvailability::class
         ],
-    version = 9
+    version = 10
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -21,4 +22,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userPokemonDao(): UserPokemonDao
     abstract fun gameDao(): GameDao
     abstract fun huntDao(): HuntDao
+    abstract fun gameAvailabilityDao(): GameAvailabilityDao
 }

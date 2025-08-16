@@ -65,10 +65,28 @@ interface UserPokemonDao {
 
 @Dao
 interface GameDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGames(games: List<Game>)
+
+    @Query("SELECT * FROM games WHERE name = :name")
+    suspend fun getGameByName(name: String): Game?
+
+    @Query("""
+        SELECT g.* FROM games g
+        INNER JOIN game_availability ga ON g.id = ga.gameId
+        WHERE ga.pokemonId = :pokemonId
+    """)
+    suspend fun getGamesByPokemonId(pokemonId: Int): List<Game>
 }
 
+@Dao
+interface GameAvailabilityDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAvailability(availability: List<GameAvailability>)
+
+    @Query("SELECT * FROM game_availability WHERE pokemonId = :pokemonId AND gameId = :gameId")
+    suspend fun getAvailability(pokemonId: Int, gameId: Int): GameAvailability?
+}
 
 @Dao
 interface HuntDao {
