@@ -6,6 +6,8 @@ import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Delete
 import androidx.room.OnConflictStrategy
+import androidx.room.Transaction
+import com.example.shinyhuntapp.data.local.relations.PokemonWithGames
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -36,6 +38,18 @@ interface PokemonDao {
 
     @Query("SELECT COUNT(*) FROM pokemon")
     suspend fun getPokemonCount(): Int
+
+    @Transaction
+    @Query("SELECT * FROM pokemon WHERE id = :pokemonId")
+    suspend fun getPokemonWithGames(pokemonId: Int): PokemonWithGames?
+
+    @Transaction
+    @Query("""
+        SELECT p.* FROM pokemon p 
+        INNER JOIN game_availability ga ON p.id = ga.pokemonId 
+        WHERE ga.gameId = :gameId
+    """)
+    suspend fun getPokemonByGame(gameId: Int): List<PokemonWithGames>
 }
 
 @Dao

@@ -1,7 +1,9 @@
 package com.example.shinyhuntapp.viewmodels
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -28,6 +30,7 @@ class PokemonViewModel(
     private val _userPokemonMap = MutableStateFlow<Map<Int, UserPokemon>>(emptyMap())
     val userPokemonMap: StateFlow<Map<Int, UserPokemon>> = _userPokemonMap
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun fetchAndStorePokemonIfNeeded() {
         if (!preferences.hasFetchedPokemon()) {
             fetchAndStorePokemonData()
@@ -36,6 +39,7 @@ class PokemonViewModel(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun fetchAndStorePokemonData() {
         viewModelScope.launch {
             try {
@@ -150,6 +154,7 @@ class PokemonViewModel(
         preferences.setHasFetchedPokemon(false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun forceFetchPokemon() {
         fetchAndStorePokemonData()
         preferences.setHasFetchedPokemon(true)

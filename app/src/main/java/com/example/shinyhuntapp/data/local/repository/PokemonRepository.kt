@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.shinyhuntapp.data.local.DataBundle
+import com.example.shinyhuntapp.data.local.Game
 import com.example.shinyhuntapp.data.local.GameAvailabilityDao
 import com.example.shinyhuntapp.data.local.GameDao
 import com.example.shinyhuntapp.data.local.Pokemon
@@ -50,6 +51,8 @@ class PokemonRepository(
             val bundle = Gson().fromJson(jsonString, DataBundle::class.java)
 
             pokemonDao.insertAllPokemon(bundle.pokemon)
+            gameDao.insertGames(bundle.games)
+            gameAvailabilityDao.insertAvailability(bundle.gameAvailability)
 
             Log.d("Repository", "Loaded ${bundle.pokemon.size} Pokemon from JSON bundle")
             true

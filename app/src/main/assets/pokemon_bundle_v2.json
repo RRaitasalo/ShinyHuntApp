@@ -1,0 +1,3441 @@
+{
+  "pokemon": [
+    {
+      "id": 1,
+      "name": "Bulbasaur",
+      "nationalDexNumber": 1,
+      "type1": "grass",
+      "type2": "poison",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1.png"
+    },
+    {
+      "id": 2,
+      "name": "Ivysaur",
+      "nationalDexNumber": 2,
+      "type1": "grass",
+      "type2": "poison",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/2.png"
+    },
+    {
+      "id": 3,
+      "name": "Venusaur",
+      "nationalDexNumber": 3,
+      "type1": "grass",
+      "type2": "poison",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/3.png"
+    },
+    {
+      "id": 4,
+      "name": "Charmander",
+      "nationalDexNumber": 4,
+      "type1": "fire",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/4.png"
+    },
+    {
+      "id": 5,
+      "name": "Charmeleon",
+      "nationalDexNumber": 5,
+      "type1": "fire",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/5.png"
+    },
+    {
+      "id": 6,
+      "name": "Charizard",
+      "nationalDexNumber": 6,
+      "type1": "fire",
+      "type2": "flying",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/6.png"
+    },
+    {
+      "id": 7,
+      "name": "Squirtle",
+      "nationalDexNumber": 7,
+      "type1": "water",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/7.png"
+    },
+    {
+      "id": 8,
+      "name": "Wartortle",
+      "nationalDexNumber": 8,
+      "type1": "water",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/8.png"
+    },
+    {
+      "id": 9,
+      "name": "Blastoise",
+      "nationalDexNumber": 9,
+      "type1": "water",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/9.png"
+    },
+    {
+      "id": 10,
+      "name": "Caterpie",
+      "nationalDexNumber": 10,
+      "type1": "bug",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/10.png"
+    },
+    {
+      "id": 11,
+      "name": "Metapod",
+      "nationalDexNumber": 11,
+      "type1": "bug",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/11.png"
+    },
+    {
+      "id": 12,
+      "name": "Butterfree",
+      "nationalDexNumber": 12,
+      "type1": "bug",
+      "type2": "flying",
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png",
+      "shinySprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/12.png"
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "name": "Red",
+      "generation": 1,
+      "region": "Kanto"
+    },
+    {
+      "id": 2,
+      "name": "Blue",
+      "generation": 1,
+      "region": "Kanto"
+    },
+    {
+      "id": 3,
+      "name": "Yellow",
+      "generation": 1,
+      "region": "Kanto"
+    },
+    {
+      "id": 4,
+      "name": "Gold",
+      "generation": 2,
+      "region": "Johto"
+    },
+    {
+      "id": 5,
+      "name": "Silver",
+      "generation": 2,
+      "region": "Johto"
+    },
+    {
+      "id": 6,
+      "name": "Crystal",
+      "generation": 2,
+      "region": "Johto"
+    },
+    {
+      "id": 7,
+      "name": "Ruby",
+      "generation": 3,
+      "region": "Hoenn"
+    },
+    {
+      "id": 8,
+      "name": "Sapphire",
+      "generation": 3,
+      "region": "Hoenn"
+    },
+    {
+      "id": 9,
+      "name": "Emerald",
+      "generation": 3,
+      "region": "Hoenn"
+    },
+    {
+      "id": 10,
+      "name": "FireRed",
+      "generation": 3,
+      "region": "Kanto"
+    },
+    {
+      "id": 11,
+      "name": "LeafGreen",
+      "generation": 3,
+      "region": "Kanto"
+    },
+    {
+      "id": 12,
+      "name": "Diamond",
+      "generation": 4,
+      "region": "Sinnoh"
+    },
+    {
+      "id": 13,
+      "name": "Pearl",
+      "generation": 4,
+      "region": "Sinnoh"
+    },
+    {
+      "id": 14,
+      "name": "Platinum",
+      "generation": 4,
+      "region": "Sinnoh"
+    },
+    {
+      "id": 15,
+      "name": "HeartGold",
+      "generation": 4,
+      "region": "Johto"
+    },
+    {
+      "id": 16,
+      "name": "SoulSilver",
+      "generation": 4,
+      "region": "Johto"
+    },
+    {
+      "id": 17,
+      "name": "Black",
+      "generation": 5,
+      "region": "Unova"
+    },
+    {
+      "id": 18,
+      "name": "White",
+      "generation": 5,
+      "region": "Unova"
+    },
+    {
+      "id": 19,
+      "name": "Black 2",
+      "generation": 5,
+      "region": "Unova"
+    },
+    {
+      "id": 20,
+      "name": "White 2",
+      "generation": 5,
+      "region": "Unova"
+    },
+    {
+      "id": 21,
+      "name": "X",
+      "generation": 6,
+      "region": "Kalos"
+    },
+    {
+      "id": 22,
+      "name": "Y",
+      "generation": 6,
+      "region": "Kalos"
+    },
+    {
+      "id": 23,
+      "name": "Omega Ruby",
+      "generation": 6,
+      "region": "Hoenn"
+    },
+    {
+      "id": 24,
+      "name": "Alpha Sapphire",
+      "generation": 6,
+      "region": "Hoenn"
+    },
+    {
+      "id": 25,
+      "name": "Sun",
+      "generation": 7,
+      "region": "Alola"
+    },
+    {
+      "id": 26,
+      "name": "Moon",
+      "generation": 7,
+      "region": "Alola"
+    },
+    {
+      "id": 27,
+      "name": "Ultra Sun",
+      "generation": 7,
+      "region": "Alola"
+    },
+    {
+      "id": 28,
+      "name": "Ultra Moon",
+      "generation": 7,
+      "region": "Alola"
+    },
+    {
+      "id": 29,
+      "name": "Let\u0027s Go Pikachu",
+      "generation": 7,
+      "region": "Kanto"
+    },
+    {
+      "id": 30,
+      "name": "Let\u0027s Go Eevee",
+      "generation": 7,
+      "region": "Kanto"
+    },
+    {
+      "id": 31,
+      "name": "Sword",
+      "generation": 8,
+      "region": "Galar"
+    },
+    {
+      "id": 32,
+      "name": "Shield",
+      "generation": 8,
+      "region": "Galar"
+    },
+    {
+      "id": 33,
+      "name": "Brilliant Diamond",
+      "generation": 8,
+      "region": "Sinnoh"
+    },
+    {
+      "id": 34,
+      "name": "Shining Pearl",
+      "generation": 8,
+      "region": "Sinnoh"
+    },
+    {
+      "id": 35,
+      "name": "Legends: Arceus",
+      "generation": 8,
+      "region": "Hisui"
+    },
+    {
+      "id": 36,
+      "name": "Scarlet",
+      "generation": 9,
+      "region": "Paldea"
+    },
+    {
+      "id": 37,
+      "name": "Violet",
+      "generation": 9,
+      "region": "Paldea"
+    }
+  ],
+  "gameAvailability": [
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 1,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 2,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 3,
+      "locations": "[\"Cerulean City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 10,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 11,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 15,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 16,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 21,
+      "locations": "[\"Lumiose City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 22,
+      "locations": "[\"Lumiose City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 27,
+      "locations": "[\"Route 2\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 28,
+      "locations": "[\"Route 2\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 29,
+      "locations": "[\"Cerulean City\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 30,
+      "locations": "[\"Cerulean City\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 33,
+      "locations": "[\"Grassland Cave\",\"Swampy Cave\",\"Riverbank Cave\",\"Still-Water Cavern\",\"Sunlit Cavern\",\"Bogsunk Cavern\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 34,
+      "locations": "[\"Grassland Cave\",\"Swampy Cave\",\"Riverbank Cave\",\"Still-Water Cavern\",\"Sunlit Cavern\",\"Bogsunk Cavern\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 1,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 1,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 2,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 3,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 10,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 11,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 15,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 16,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 21,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 22,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 27,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 28,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 29,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 30,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 33,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 34,
+      "locations": "[\"Evolve Bulbasaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 2,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 1,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 2,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 3,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 10,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 11,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 15,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 16,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 21,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 22,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 27,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 28,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 29,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 30,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 33,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 34,
+      "locations": "[\"Evolve Ivysaur\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 3,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 1,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 2,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 3,
+      "locations": "[\"Route 24\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 10,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 11,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 15,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 16,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 21,
+      "locations": "[\"Lumiose City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 22,
+      "locations": "[\"Lumiose City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 27,
+      "locations": "[\"Route 3\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 28,
+      "locations": "[\"Route 3\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 29,
+      "locations": "[\"Route 3\",\"4\",\"24\",\"Rock Tunnel\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 30,
+      "locations": "[\"Route 3\",\"4\",\"24\",\"Rock Tunnel\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 33,
+      "locations": "[\"Volcanic Cave\",\"Sandsear Cave\",\"Typhlo Cavern\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 34,
+      "locations": "[\"Volcanic Cave\",\"Sandsear Cave\",\"Typhlo Cavern\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 4,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 1,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 2,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 3,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 10,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 11,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 15,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 16,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 21,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 22,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 27,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 28,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 29,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 30,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 33,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 34,
+      "locations": "[\"Evolve Charmander\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 5,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 1,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 2,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 3,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 10,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 11,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 15,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 16,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 21,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 22,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 27,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 28,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 29,
+      "locations": "[\"Route 2\",\"3\",\"4\",\"7\",\"8\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"21\",\"22\",\"23\",\"24\",\"25\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 30,
+      "locations": "[\"Route 2\",\"3\",\"4\",\"7\",\"8\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"21\",\"22\",\"23\",\"24\",\"25\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 33,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 34,
+      "locations": "[\"Evolve Charmeleon\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 6,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 1,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 2,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 3,
+      "locations": "[\"Vermilion City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 10,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 11,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 15,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 16,
+      "locations": "[\"Pallet Town\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 21,
+      "locations": "[\"Lumiose City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 22,
+      "locations": "[\"Lumiose City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 27,
+      "locations": "[\"Seaward Cave\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 28,
+      "locations": "[\"Seaward Cave\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 29,
+      "locations": "[\"Route 24\",\"25\",\"Seafoam Islands\",\"Vermilion City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 30,
+      "locations": "[\"Route 24\",\"25\",\"Seafoam Islands\",\"Vermilion City\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 33,
+      "locations": "[\"Fountainspring Cave\",\"Riverbank Cave\",\"Still-Water Cavern\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 34,
+      "locations": "[\"Fountainspring Cave\",\"Riverbank Cave\",\"Still-Water Cavern\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 7,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 1,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 2,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 3,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 10,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 11,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 15,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 16,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 21,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 22,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 27,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 28,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 29,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 30,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 33,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 34,
+      "locations": "[\"Evolve Squirtle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 8,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 1,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 2,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 3,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 4,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 5,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 6,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 10,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 11,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 12,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 13,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 14,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 15,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 16,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 18,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 21,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 22,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 25,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 26,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 27,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 28,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 29,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 30,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 31,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 32,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 33,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 34,
+      "locations": "[\"Evolve Wartortle\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 9,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 1,
+      "locations": "[\"Route 25\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 2,
+      "locations": "[\"Route 2\",\"24\",\"25\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 3,
+      "locations": "[\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 4,
+      "locations": "[\"Route 2\",\"26\",\"27\",\"30\",\"31\",\"34\",\"35\",\"36\",\"37\",\"38\",\"39\",\"Azalea Town\",\"Ilex Forest\",\"Lake of Rage\",\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 5,
+      "locations": "[\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 6,
+      "locations": "[\"Route 2\",\"24\",\"25\",\"30\",\"31\",\"Ilex Forest\",\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 10,
+      "locations": "[\"Route 2\",\"24\",\"25\",\"Pattern Bush\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 11,
+      "locations": "[\"Route 2\",\"24\",\"25\",\"Pattern Bush\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 12,
+      "locations": "[\"Route 204\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 13,
+      "locations": "[\"Route 204\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 14,
+      "locations": "[\"Route 204\",\"Eterna Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 15,
+      "locations": "[\"Route 2\",\"30\",\"31\",\"Ilex Forest\",\"National Park\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 16,
+      "locations": "[\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 18,
+      "locations": "[\"Metapod\",\"Butterfree\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 21,
+      "locations": "[\"Santalune Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 22,
+      "locations": "[\"Route 2\",\"Santalune Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 25,
+      "locations": "[\"Route 1\",\"5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 26,
+      "locations": "[\"Route 1\",\"5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 27,
+      "locations": "[\"Route 1\",\"5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 28,
+      "locations": "[\"Route 1\",\"5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 29,
+      "locations": "[\"Route 2\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 30,
+      "locations": "[\"Route 2\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 31,
+      "locations": "[\"Route 1\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 32,
+      "locations": "[\"Route 1\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 33,
+      "locations": "[\"Spacious Cave\",\"Grassland Cave\",\"Swampy Cave\",\"Riverbank Cave\",\"Still-Water Cavern\",\"Sunlit Cavern\",\"Bogsunk Cavern\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 34,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 10,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 1,
+      "locations": "[\"Route 25\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 2,
+      "locations": "[\"Route 24\",\"25\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 3,
+      "locations": "[\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 4,
+      "locations": "[\"Route 2\",\"26\",\"27\",\"30\",\"31\",\"34\",\"35\",\"36\",\"37\",\"38\",\"39\",\"Azalea Town\",\"Ilex Forest\",\"Lake of Rage\",\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 5,
+      "locations": "[\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 6,
+      "locations": "[\"Route 24\",\"25\",\"Ilex Forest\",\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 10,
+      "locations": "[\"Route 24\",\"25\",\"Pattern Bush\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 11,
+      "locations": "[\"Route 24\",\"25\",\"Pattern Bush\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 12,
+      "locations": "[\"Eterna Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 13,
+      "locations": "[\"Eterna Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 14,
+      "locations": "[\"Eterna Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 15,
+      "locations": "[\"Route 2\",\"30\",\"31\",\"47\",\"Ilex Forest\",\"National Park\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 16,
+      "locations": "[\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 18,
+      "locations": "[\"Route 12\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 21,
+      "locations": "[\"Evolve Caterpie\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 22,
+      "locations": "[\"Santalune Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 25,
+      "locations": "[\"Route 1\",\"5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 26,
+      "locations": "[\"Route 1\",\"5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 27,
+      "locations": "[\"Route 5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 28,
+      "locations": "[\"Route 5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 29,
+      "locations": "[\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 30,
+      "locations": "[\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 31,
+      "locations": "[\"Rolling Fields\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 32,
+      "locations": "[\"Rolling Fields\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 33,
+      "locations": "[\"Evolve Caterpie\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 34,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 11,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 1,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 2,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 3,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 4,
+      "locations": "[\"Route 2\",\"26\",\"27\",\"34\",\"35\",\"36\",\"37\",\"38\",\"39\",\"Azalea Town\",\"Ilex Forest\",\"Lake of Rage\",\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 5,
+      "locations": "[\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 6,
+      "locations": "[\"Route 2\",\"24\",\"25\",\"Ilex Forest\",\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 7,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 8,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 10,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 11,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 9,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 12,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 13,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 14,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 15,
+      "locations": "[\"Route 2\",\"47\",\"Ilex Forest\",\"National Park\",\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 16,
+      "locations": "[\"National Park\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 17,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 18,
+      "locations": "[\"Route 12\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 19,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 20,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 21,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 22,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 23,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 24,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 25,
+      "locations": "[\"Route 5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 26,
+      "locations": "[\"Route 5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 27,
+      "locations": "[\"Route 5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 28,
+      "locations": "[\"Route 5\",\"Melemele Meadow\",\"Lush Jungle\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 29,
+      "locations": "[\"Viridian Forest\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 30,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 31,
+      "locations": "[\"Rolling Fields\",\"East Lake Axewell\",\"Slumbering Weald\",\"Giant\\u0027s Mirror\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 32,
+      "locations": "[\"Rolling Fields\",\"East Lake Axewell\",\"Slumbering Weald\",\"Giant\\u0027s Mirror\"]",
+      "obtainMethod": "wild"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 33,
+      "locations": "[\"Evolve Metapod\"]",
+      "obtainMethod": "evolve"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 34,
+      "locations": "[\"Trade/migrate from another game\"]",
+      "obtainMethod": "trade"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 35,
+      "locations": "[\"Not available in this game\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 36,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    },
+    {
+      "id": 0,
+      "pokemonId": 12,
+      "gameId": 37,
+      "locations": "[\"Location data not yet available\"]",
+      "obtainMethod": "special"
+    }
+  ],
+  "version": "0.2",
+  "lastUpdated": "2025-08-16"
+}
