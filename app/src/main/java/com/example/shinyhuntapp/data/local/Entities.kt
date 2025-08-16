@@ -1,7 +1,6 @@
 package com.example.shinyhuntapp.data.local
 
 import androidx.room.*
-import com.example.shinyhuntapp.data.local.HuntMethod
 import com.google.gson.Gson
 
 class Converters {

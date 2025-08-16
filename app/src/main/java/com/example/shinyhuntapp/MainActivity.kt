@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.shinyhuntapp.data.PreferenceManager
 import com.example.shinyhuntapp.navigation.Routes
+import com.example.shinyhuntapp.tools.DataBundleCreator
 import com.example.shinyhuntapp.ui.screens.DevToolsScreen
 import com.example.shinyhuntapp.ui.screens.HuntScreen
 import com.example.shinyhuntapp.ui.screens.LoginScreen
@@ -31,6 +32,7 @@ import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import com.example.shinyhuntapp.viewmodels.LoginViewModelFactory
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 import com.example.shinyhuntapp.viewmodels.PokemonViewModelFactory
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
 

@@ -8,20 +8,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.shinyhuntapp.data.PreferenceManager
 import com.example.shinyhuntapp.data.local.DatabaseProvider
 import com.example.shinyhuntapp.data.local.Pokemon
-import com.example.shinyhuntapp.data.local.PokemonDao
-import com.example.shinyhuntapp.data.local.PokemonDetails
 import com.example.shinyhuntapp.data.local.UserPokemon
 import com.example.shinyhuntapp.data.local.UserPokemonDao
-import com.example.shinyhuntapp.data.network.PokeApiService
+import com.example.shinyhuntapp.data.local.repository.PokemonRepository
 import com.example.shinyhuntapp.data.network.RetrofitInstance
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class PokemonViewModel(
-    private val pokemonDao: PokemonDao,
+    private val repository: PokemonRepository,
     private val userPokemonDao: UserPokemonDao,
-    private val api: PokeApiService,
     private val preferences: PreferenceManager
 ): ViewModel() {
 
@@ -31,26 +28,24 @@ class PokemonViewModel(
     private val _userPokemonMap = MutableStateFlow<Map<Int, UserPokemon>>(emptyMap())
     val userPokemonMap: StateFlow<Map<Int, UserPokemon>> = _userPokemonMap
 
-    fun getPokemonByIdDevToolsTest(id: Int): Pokemon? {
-        viewModelScope.launch {
-            try {
-                pokemonDao.getPokemonById(id)
-                Log.d("PokemonViewModel", "Pokemon fetched from Room")
-            } catch (e: Exception) {
-                Log.d("PokemonViewModel", "Error fetching Pokémon", e)
-            }
+    fun fetchAndStorePokemonIfNeeded() {
+        if (!preferences.hasFetchedPokemon()) {
+            fetchAndStorePokemonData()
+        } else {
+            Log.d("PokemonViewModel", "Pokemon already fetched")
         }
-        return null
     }
 
-    fun getPokemonById(id: Int, onResult: (Pokemon?) -> Unit) {
+    private fun fetchAndStorePokemonData() {
         viewModelScope.launch {
             try {
-                val pokemon = pokemonDao.getPokemonById(id)
-                onResult(pokemon)
+                val success = repository.initializePokemonData()
+                if (success) {
+                    preferences.setHasFetchedPokemon(true)
+                    fetchPokemonList()
+                }
             } catch (e: Exception) {
-                Log.e("PokemonViewModel", "Error fetching Pokémon by ID", e)
-                onResult(null)
+                Log.e("ViewModel", "Error loading Pokemon", e)
             }
         }
     }
@@ -58,42 +53,8 @@ class PokemonViewModel(
     fun fetchPokemonList() {
         viewModelScope.launch {
             try {
-                val pokemonList = pokemonDao.getAllPokemon()
+                val pokemonList = repository.getAllPokemon()
                 _pokemonList.value = pokemonList
-            } catch (e: Exception) {
-                Log.e("PokemonViewModel", "Error fetching Pokémon", e)
-            }
-        }
-    }
-
-    fun fetchAndStorePokemonIfNeeded() {
-        if (!preferences.hasFetchedPokemon()) {
-            fetchAndStoreAllPokemon()
-        } else {
-            Log.d("PokemonViewModel", "Pokemon already fetched")
-        }
-    }
-
-    fun fetchAndStoreAllPokemon() {
-        Log.d("PokemonViewModel", "Fetching and storing all Pokémon")
-        viewModelScope.launch {
-            try {
-                val listResponse = api.getPokemonList()
-                val entries = listResponse.results
-
-                val pokemonList = mutableListOf<Pokemon>()
-
-                for (entry in entries) {
-                    val url = entry.url
-                    val details = api.getPokemonDetailsByUrl(url)
-                    val pokemon = mapToPokemon(details)
-                    pokemonList.add(pokemon)
-                }
-
-                // Save all to Room in one go
-                pokemonDao.insertAllPokemon(pokemonList)
-                preferences.setHasFetchedPokemon(true)
-
             } catch (e: Exception) {
                 Log.e("PokemonViewModel", "Error fetching Pokémon", e)
             }
@@ -108,6 +69,30 @@ class PokemonViewModel(
                 _userPokemonMap.value = userPokemonList.associateBy { it.pokemonId }
             } catch (e: Exception) {
                 Log.e("PokemonViewModel", "Error fetching user Pokemon", e)
+            }
+        }
+    }
+
+    fun getPokemonByIdDevToolsTest(id: Int): Pokemon? {
+        viewModelScope.launch {
+            try {
+                repository.getPokemonById(id)
+                Log.d("PokemonViewModel", "Pokemon fetched from Room")
+            } catch (e: Exception) {
+                Log.d("PokemonViewModel", "Error fetching Pokémon", e)
+            }
+        }
+        return null
+    }
+
+    fun getPokemonById(id: Int, onResult: (Pokemon?) -> Unit) {
+        viewModelScope.launch {
+            try {
+                val pokemon = repository.getPokemonById(id)
+                onResult(pokemon)
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error fetching Pokémon by ID", e)
+                onResult(null)
             }
         }
     }
@@ -153,25 +138,10 @@ class PokemonViewModel(
         }
     }
 
-    private fun mapToPokemon(details: PokemonDetails): Pokemon {
-        val type1 = details.types.find { it.slot == 1 }?.type?.name ?: "unknown"
-        val type2 = details.types.find { it.slot == 2 }?.type?.name
-
-        return Pokemon(
-            id = details.id,
-            name = details.name.replaceFirstChar { it.uppercase() },
-            nationalDexNumber = details.id,
-            type1 = type1,
-            type2 = type2,
-            spriteUrl = details.sprites.other.officialArtwork.frontDefault ?: "",
-            shinySprite = details.sprites.other.officialArtwork.frontShiny ?: ""
-        )
-    }
-
     // -- DEVELOPER TOOLS --
     fun clearPokemonTable(){
         viewModelScope.launch {
-            pokemonDao.deleteAll()
+            repository.clearDatabase()
             preferences.setHasFetchedPokemon(false)
         }
     }
@@ -181,7 +151,7 @@ class PokemonViewModel(
     }
 
     fun forceFetchPokemon() {
-        fetchAndStoreAllPokemon()
+        fetchAndStorePokemonData()
         preferences.setHasFetchedPokemon(true)
     }
 
@@ -201,8 +171,8 @@ class PokemonViewModelFactory(
         val preferenceManager = PreferenceManager(context)
         val pokemonDao = db.pokemonDao()
         val userPokemonDao = db.userPokemonDao()
-        val api = RetrofitInstance.api
+        val repository = PokemonRepository(context, pokemonDao)
 
-        return PokemonViewModel(pokemonDao, userPokemonDao, api, preferenceManager) as T
+        return PokemonViewModel(repository, userPokemonDao, preferenceManager) as T
     }
 }
