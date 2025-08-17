@@ -113,6 +113,18 @@ class PokemonViewModel(
         }
     }
 
+    fun getPokemonByGeneration(generation: Int) {
+        viewModelScope.launch {
+            try {
+                val pokemonList = repository.getPokemonByGeneration(generation)
+                Log.d("PokemonViewModel", "Pokemon fetched from Room: $pokemonList")
+                _pokemonList.value = pokemonList
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error fetching Pokémon by generation", e)
+            }
+        }
+    }
+
     fun toggleShinyStatus(pokemonId: Int) {
         viewModelScope.launch {
             try {

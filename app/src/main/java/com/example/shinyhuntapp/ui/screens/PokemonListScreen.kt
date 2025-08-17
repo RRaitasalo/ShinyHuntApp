@@ -71,6 +71,7 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
     val userPokemonMap by viewModel.userPokemonMap.collectAsState()
     var isFilterMenuVisible by remember { mutableStateOf(false) }
     var selectedGame by remember { mutableStateOf<String?>(null) }
+    var selectedGeneration by remember { mutableStateOf<Int?>(null) }
     val filterLength = 240
 
     LaunchedEffect(Unit) {
@@ -78,11 +79,17 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
         viewModel.fetchUserPokemon()
     }
 
-    LaunchedEffect(selectedGame) {
-        if (selectedGame == null) {
-            viewModel.fetchPokemonList()
-        } else {
-            viewModel.getPokemonByGame(selectedGame!!)
+    LaunchedEffect(selectedGame, selectedGeneration) {
+        when {
+            selectedGame != null -> {
+                viewModel.getPokemonByGame(selectedGame!!)
+            }
+            selectedGeneration != null -> {
+                viewModel.getPokemonByGeneration(selectedGeneration!!)
+            }
+            else -> {
+                viewModel.fetchPokemonList()
+            }
         }
     }
 
@@ -147,10 +154,13 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
         Box(modifier = Modifier.fillMaxSize()) {
             FilterMenu(
                 selectedGame = selectedGame,
+                selectedGeneration = selectedGeneration,
                 onGameSelectionChange = { selectedGame = it },
+                onGenerationSelectionChange = { selectedGeneration = it },
                 onDismiss = { isFilterMenuVisible = false },
                 onClearFilters = {
                     selectedGame = null
+                    selectedGeneration = null
                 },
                 filterLength = filterLength,
                 modifier = Modifier.align(Alignment.CenterEnd)
@@ -162,7 +172,9 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
 @Composable
 fun FilterMenu(
     selectedGame: String?,
+    selectedGeneration: Int?,
     onGameSelectionChange: (String?) -> Unit,
+    onGenerationSelectionChange: (Int?) -> Unit,
     onDismiss: () -> Unit,
     onClearFilters: () -> Unit,
     filterLength: Int,
@@ -206,7 +218,7 @@ fun FilterMenu(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "Individual Games",
+                    text = "Games and generations",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -217,13 +229,32 @@ fun FilterMenu(
 
                 gamesByGeneration.forEach { (generation, games) ->
                     if (generation > 0) {
-                        Text(
-                            text = "Generation $generation",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(top = 8.dp)
-                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    if (selectedGeneration == generation) {
+                                        onGenerationSelectionChange(null)
+                                    } else {
+                                        onGenerationSelectionChange(generation)
+                                        onGameSelectionChange(null)
+                                    }
+                                }
+                                .padding(vertical = 4.dp)
+                        ) {
+                            Checkbox(
+                                checked = selectedGeneration == generation,
+                                onCheckedChange = null
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Generation $generation",
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Medium,
+                                color = MaterialTheme.colorScheme.primary,
+                            )
+                        }
 
                         games.forEach { game ->
                             Row(
@@ -235,9 +266,11 @@ fun FilterMenu(
                                             onGameSelectionChange(null)
                                         } else {
                                             onGameSelectionChange(game.name)
+                                            onGenerationSelectionChange(null)
                                         }
                                     }
-                                    .padding(vertical = 4.dp)
+                                    .padding(vertical = 2.dp, horizontal = 0.dp)
+                                    .padding(start = 24.dp)
                             ) {
                                 Checkbox(
                                     checked = selectedGame == game.name,
@@ -250,6 +283,7 @@ fun FilterMenu(
                                 )
                             }
                         }
+                        Spacer(modifier = Modifier.height(8.dp))
                     }
                 }
             }

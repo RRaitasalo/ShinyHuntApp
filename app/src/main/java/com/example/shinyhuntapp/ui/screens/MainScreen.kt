@@ -28,7 +28,6 @@ fun MainScreen(navController: NavController, pokemonViewModel: PokemonViewModel,
 
     LaunchedEffect(Unit) {
         pokemonViewModel.fetchAndStorePokemonIfNeeded()
-        pokemonViewModel.getPokemonByGame("Gold")
     }
 
     Column(

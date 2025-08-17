@@ -51,6 +51,9 @@ interface PokemonDao {
         AND ga.obtainMethod IN ('wild', 'evolve', 'breed')
     """)
     suspend fun getCatchablePokemonByGame(gameId: Int): List<Pokemon>
+
+    @Query("SELECT * FROM pokemon WHERE id BETWEEN :startId AND :endId")
+    suspend fun getPokemonByGeneration(startId: Int, endId: Int): List<Pokemon>
 }
 
 @Dao

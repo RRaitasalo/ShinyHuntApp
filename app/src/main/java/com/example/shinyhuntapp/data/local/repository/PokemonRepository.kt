@@ -88,4 +88,20 @@ class PokemonRepository(
         val game = gameDao.getGameByName(gameName) ?: return emptyList()
         return pokemonDao.getCatchablePokemonByGame(game.id)
     }
+
+    suspend fun getPokemonByGeneration(generation: Int): List<Pokemon> {
+        val (start, end) = when (generation) {
+            1 -> Pair(1, 151)
+            2 -> Pair(152, 251)
+            3 -> Pair(252, 386)
+            4 -> Pair(387, 493)
+            5 -> Pair(494, 649)
+            6 -> Pair(650, 721)
+            7 -> Pair(722, 809)
+            8 -> Pair(810, 905)
+            9 -> Pair(906, 1025)
+            else -> return emptyList()
+        }
+        return pokemonDao.getPokemonByGeneration(start, end)
+    }
 }
