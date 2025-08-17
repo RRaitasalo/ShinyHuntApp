@@ -84,7 +84,7 @@ class PokemonDbScraper {
         val method = when {
             text.contains("Trade", ignoreCase = true) -> "trade"
             text.contains("Evolve", ignoreCase = true) -> "evolve"
-            text.contains("gift", ignoreCase = true) -> "gift"
+            text.contains("gift", ignoreCase = true) -> "breed"
             links.isEmpty() -> "special"
             else -> "wild"
         }
@@ -94,6 +94,11 @@ class PokemonDbScraper {
                 val pokemonLinks = locationElement.select("a[href*='/pokedex/']")
                 val immediatePreEvolution = pokemonLinks.last()?.text()
                 listOf("Evolve $immediatePreEvolution")
+            }
+            method == "breed" -> {
+                val pokemonLinks = locationElement.select("a[href*='/pokedex/']")
+                val breededPokemon = pokemonLinks.first()?.text()
+                listOf("Breed $breededPokemon")
             }
             links.isNotEmpty() -> {
                 links.map { it.text() }.toList()

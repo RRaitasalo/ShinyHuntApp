@@ -45,11 +45,12 @@ interface PokemonDao {
 
     @Transaction
     @Query("""
-        SELECT p.* FROM pokemon p 
+        SELECT DISTINCT p.* FROM pokemon p 
         INNER JOIN game_availability ga ON p.id = ga.pokemonId 
         WHERE ga.gameId = :gameId
+        AND ga.obtainMethod IN ('wild', 'evolve', 'breed')
     """)
-    suspend fun getPokemonByGame(gameId: Int): List<PokemonWithGames>
+    suspend fun getCatchablePokemonByGame(gameId: Int): List<Pokemon>
 }
 
 @Dao

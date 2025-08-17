@@ -101,6 +101,18 @@ class PokemonViewModel(
         }
     }
 
+    fun getPokemonByGame(gameName: String) {
+        viewModelScope.launch {
+            try {
+                val pokemonList = repository.getPokemonByGame(gameName)
+                Log.d("PokemonViewModel", "Pokemon fetched from Room: $pokemonList")
+                _pokemonList.value = pokemonList
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error fetching Pokémon by game", e)
+            }
+        }
+    }
+
     fun toggleShinyStatus(pokemonId: Int) {
         viewModelScope.launch {
             try {

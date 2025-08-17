@@ -82,4 +82,10 @@ class PokemonRepository(
     suspend fun getAllPokemon(): List<Pokemon> = pokemonDao.getAllPokemon()
     suspend fun getPokemonById(id: Int): Pokemon? = pokemonDao.getPokemonById(id)
     suspend fun clearDatabase() = pokemonDao.deleteAll()
+    suspend fun getGamesByPokemon(pokemonId: Int): List<Game> = gameDao.getGamesByPokemonId(pokemonId)
+
+    suspend fun getPokemonByGame(gameName: String): List<Pokemon> {
+        val game = gameDao.getGameByName(gameName) ?: return emptyList()
+        return pokemonDao.getCatchablePokemonByGame(game.id)
+    }
 }

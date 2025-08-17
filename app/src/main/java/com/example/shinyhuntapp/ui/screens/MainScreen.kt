@@ -1,5 +1,7 @@
 package com.example.shinyhuntapp.ui.screens
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,11 +22,13 @@ import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainScreen(navController: NavController, pokemonViewModel: PokemonViewModel, loginViewModel: LoginViewModel) {
 
     LaunchedEffect(Unit) {
         pokemonViewModel.fetchAndStorePokemonIfNeeded()
+        pokemonViewModel.getPokemonByGame("Gold")
     }
 
     Column(
