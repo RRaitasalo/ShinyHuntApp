@@ -19,10 +19,18 @@
     <string name="picture_of">A picture of %1$s</string>
     <string name="shiny_caught">Shiny caught</string>
     <string name="mark_as_shiny_caught">Mark as shiny caught</string>
+    <string name="filter_pokemon">Filter Pokemon</string>
+    <string name="close_filter_menu">Close filter menu</string>
+    <string name="Games_and_generations">Games and Generations</string>
+    <string name="generation_x">Generation %1$s</string>
 
     -- Pokemon Info Screen --
     <string name="pokemon_info">Pokemon Info</string>
     <string name="pokemonId">PokemonId</string>"
+    <string name="pokemon_information">Pokemon Information</string>
+    <string name="name_of">Name: %1$s</string>
+    <string name="national_dex_number">National Dex Number: %1$s</string>
+    <string name="hunt_information">Hunt Information</string>
 
     -- Dev Tools --
     <string name="dev_tools">Developer Tools</string>
@@ -40,6 +48,8 @@
     <string name="ok">OK</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="clear">Clear</string>
+    <string name="apply">Apply</string>
 
     -- Hunt --
     <string name="hunt">Hunt</string>
@@ -58,6 +68,8 @@
     <string name="amount">Amount</string>
     <string name="enter_number">Enter Number</string>
     <string name="please_enter_valid_number">Please enter a valid number greater than 0</string>
+    <string name="continue_hunt">Continue Hunt</string>
+    <string name="more_options">More options</string>
 
     -- MainHunt --
     <string name="your_hunts">Your Hunts</string>

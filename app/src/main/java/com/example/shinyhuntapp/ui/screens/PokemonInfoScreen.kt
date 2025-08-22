@@ -74,24 +74,30 @@ fun PokemonInfoScreen(
         Column(
             modifier = Modifier.padding(innerPadding)
         ){
-            Text(text = "Pokémon Information")
-            Text(text = "Name: ${pokemon?.name}")
-            Text(text = "National Dex Number: ${pokemon?.nationalDexNumber}")
-            Button(
-                onClick = {
-                    huntViewModel.startNewHunt(pokemonId)
-                    navController.navigate(Routes.huntWithPokemonId(pokemonId))
-                }
-            ) {
-                Text(text = "Start Hunt")
-            }
+            Text(text = stringResource(R.string.pokemon_information))
+            Text(text = stringResource(R.string.name_of, pokemon?.name.toString()))
+            Text(text = stringResource(R.string.national_dex_number, pokemon?.nationalDexNumber.toString()))
             if (hunt != null) {
-                Text(text = "Hunt Information")
+                Text(text = stringResource(R.string.hunt_information))
                 HuntCard(
                     navController = navController,
                     hunt = hunt!!,
                     modifier = Modifier.padding(16.dp)
                 )
+                Button(
+                    onClick = { navController.navigate(Routes.huntWithPokemonId(pokemonId)) }
+                ) {
+                    Text(text = if (hunt?.isFoundShiny == true) stringResource(R.string.start_new_hunt) else stringResource(R.string.continue_hunt))
+                }
+            } else {
+                Button(
+                    onClick = {
+                        huntViewModel.startNewHunt(pokemonId)
+                        navController.navigate(Routes.huntWithPokemonId(pokemonId))
+                    }
+                ) {
+                    Text(text = stringResource(R.string.start_new_hunt))
+                }
             }
         }
     }

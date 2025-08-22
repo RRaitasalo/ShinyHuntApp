@@ -115,7 +115,7 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                     IconButton(onClick = { isFilterMenuVisible = true }) {
                         Icon(
                             imageVector = Icons.Default.MoreVert,
-                            contentDescription = "Filter Pokemon"
+                            contentDescription = stringResource(R.string.filter_pokemon)
                         )
                     }
                 }
@@ -205,7 +205,7 @@ fun FilterMenu(
                 IconButton(onClick = onDismiss) {
                     Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = "Close filter menu"
+                        contentDescription = stringResource(R.string.close_filter_menu)
                     )
                 }
             }
@@ -218,7 +218,7 @@ fun FilterMenu(
                     .verticalScroll(rememberScrollState())
             ) {
                 Text(
-                    text = "Games and generations",
+                    text = stringResource(R.string.Games_and_generations),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -249,7 +249,7 @@ fun FilterMenu(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Generation $generation",
+                                text = stringResource(R.string.generation_x, generation),
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.Medium,
                                 color = MaterialTheme.colorScheme.primary,
@@ -300,13 +300,13 @@ fun FilterMenu(
                     onClick = onClearFilters,
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text("Clear")
+                    Text(stringResource(R.string.clear))
                 }
                 Button(
                     onClick = onDismiss,
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text("Apply")
+                    Text(stringResource(R.string.apply))
                 }
             }
         }

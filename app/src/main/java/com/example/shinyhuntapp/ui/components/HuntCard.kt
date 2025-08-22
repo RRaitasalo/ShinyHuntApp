@@ -59,14 +59,14 @@ fun HuntCard(
                 contentAlignment = Alignment.Center
             ) {
                 IconButton( onClick = { expanded = !expanded }) {
-                    Icon(Icons.Default.MoreVert, contentDescription = "More options")
+                    Icon(Icons.Default.MoreVert, contentDescription = stringResource(R.string.more_options))
                 }
                 DropdownMenu(
                     expanded = expanded,
                     onDismissRequest = { expanded = false }
                 ) {
                     DropdownMenuItem(
-                        text = { Text(stringResource(R.string.edit)) },
+                        text = { if (hunt.isFoundShiny) Text(stringResource(R.string.edit)) else Text(stringResource(R.string.continue_hunt)) },
                         onClick = { navController.navigate(Routes.huntWithPokemonId(hunt.pokemon.id)) }
                     )
                 }
