@@ -14,6 +14,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
@@ -77,6 +78,7 @@ fun HuntScreen(
     var showSettingsDialog by remember { mutableStateOf(false) }
     var showCompleteDialog by remember { mutableStateOf(false) }
     var showCustomDialog by remember { mutableStateOf(false) }
+    var showDeleteHuntDialog by remember { mutableStateOf(false) }
 
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
@@ -111,6 +113,12 @@ fun HuntScreen(
                         Icon(
                             imageVector = Icons.Default.Settings,
                             contentDescription = stringResource(R.string.hunt_settings)
+                        )
+                    }
+                    IconButton(onClick = { showDeleteHuntDialog = true }) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = stringResource(R.string.delete_hunt)
                         )
                     }
                 }
@@ -303,7 +311,7 @@ fun HuntScreen(
             }
         }
     }
-    // Custom encounter amount dialog
+
     if (showCustomDialog) {
         CustomAmountDialog(
             currentAmount = incrementAmount,
@@ -316,7 +324,6 @@ fun HuntScreen(
         )
     }
 
-    // Settings Dialog
     if (showSettingsDialog) {
         HuntSettingsDialog(
             huntMethod = huntMethod,
@@ -328,7 +335,7 @@ fun HuntScreen(
             }
         )
     }
-    // Complete Hunt Dialog
+
     if (showCompleteDialog) {
         AlertDialog(
             onDismissRequest = { showCompleteDialog = false },
@@ -348,6 +355,33 @@ fun HuntScreen(
                     }
                 ) {
                     Text(stringResource(R.string.complete_hunt))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showCompleteDialog = false }) {
+                    Text(stringResource(R.string.cancel))
+                }
+            }
+        )
+    }
+
+    if (showDeleteHuntDialog) {
+        AlertDialog(
+            onDismissRequest = { showDeleteHuntDialog = false },
+            title = { Text(stringResource(R.string.delete_hunt)) },
+            text = { Text(stringResource(R.string.delete_hunt_message)) },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        huntViewModel.deleteHunt {
+                            showDeleteHuntDialog = false
+                            navController.navigate(Routes.MAIN) {
+                                popUpTo(currentRoute) { inclusive = true }
+                            }
+                        }
+                    }
+                ) {
+                    Text(stringResource(R.string.delete))
                 }
             },
             dismissButton = {
