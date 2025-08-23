@@ -92,7 +92,6 @@ fun PokemonInfoScreen(
             } else {
                 Button(
                     onClick = {
-                        huntViewModel.startNewHunt(pokemonId)
                         navController.navigate(Routes.huntWithPokemonId(pokemonId))
                     }
                 ) {

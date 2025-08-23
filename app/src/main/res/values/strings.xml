@@ -23,6 +23,8 @@
     <string name="close_filter_menu">Close filter menu</string>
     <string name="Games_and_generations">Games and Generations</string>
     <string name="generation_x">Generation %1$s</string>
+    <string name="all">All</string>
+    <string name="ShinyDex">ShinyDex</string>
 
     -- Pokemon Info Screen --
     <string name="pokemon_info">Pokemon Info</string>

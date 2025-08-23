@@ -33,6 +33,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -45,6 +46,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -72,7 +74,20 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
     var isFilterMenuVisible by remember { mutableStateOf(false) }
     var selectedGame by remember { mutableStateOf<String?>(null) }
     var selectedGeneration by remember { mutableStateOf<Int?>(null) }
+    var showOnlyShinyDex by remember { mutableStateOf(false) }
     val filterLength = 240
+
+    val filteredPokemonList by remember {
+        derivedStateOf {
+            if (showOnlyShinyDex) {
+                pokemonList.filter { pokemon ->
+                    userPokemonMap[pokemon.id]?.hasCaughtShiny == true
+                }
+            } else {
+                pokemonList
+            }
+        }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.fetchPokemonList()
@@ -98,10 +113,29 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text(
-                    text = stringResource(R.string.pokemon_list),
-                    style = MaterialTheme.typography.headlineMedium
-                )
+                title = {
+                    Column {
+                        Text(
+                            text = stringResource(R.string.pokemon_list),
+                            style = MaterialTheme.typography.headlineMedium
+                        )
+                        Row(
+                            modifier = Modifier.padding(top = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            FilterChip(
+                                onClick = { showOnlyShinyDex = false },
+                                label = { Text(stringResource(R.string.all)) },
+                                selected = !showOnlyShinyDex
+                            )
+                            FilterChip(
+                                onClick = { showOnlyShinyDex = true },
+                                label = { Text(stringResource(R.string.ShinyDex)) },
+                                selected = showOnlyShinyDex
+                            )
+                        }
+
+                    }
                 },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
@@ -127,7 +161,7 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            items(pokemonList) { pokemon ->
+            items(filteredPokemonList) { pokemon ->
                 PokemonCard(
                     navController = navController,
                     pokemon = pokemon,
@@ -198,7 +232,7 @@ fun FilterMenu(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Filter Pokemon",
+                    text = stringResource(R.string.filter_pokemon),
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold
                 )
