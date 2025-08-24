@@ -99,7 +99,7 @@ class DataBundleCreator {
         )
     }
 
-    fun saveBundleToFile(bundle: DataBundle, filename: String = "pokemon_bundle_v2.json") {
+    fun saveBundleToFile(bundle: DataBundle, filename: String = "pokemon_bundle_v3.json") {
         val gson = GsonBuilder().setPrettyPrinting().create()
         val json = gson.toJson(bundle)
         File(filename).writeText(json)

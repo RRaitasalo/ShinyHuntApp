@@ -21,10 +21,11 @@
     <string name="mark_as_shiny_caught">Mark as shiny caught</string>
     <string name="filter_pokemon">Filter Pokemon</string>
     <string name="close_filter_menu">Close filter menu</string>
-    <string name="Games_and_generations">Games and Generations</string>
+    <string name="games">Games</string>
     <string name="generation_x">Generation %1$s</string>
     <string name="all">All</string>
-    <string name="ShinyDex">ShinyDex</string>
+    <string name="shinydex">ShinyDex</string>
+    <string name="generations">Generations</string>
 
     -- Pokemon Info Screen --
     <string name="pokemon_info">Pokemon Info</string>
@@ -52,6 +53,10 @@
     <string name="edit">Edit</string>
     <string name="clear">Clear</string>
     <string name="apply">Apply</string>
+    <string name="collapse">Collapse</string>
+    <string name="expand">Expand</string>
+
+
 
     -- Hunt --
     <string name="hunt">Hunt</string>

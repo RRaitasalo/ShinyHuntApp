@@ -25,6 +25,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
@@ -73,7 +75,7 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
     val userPokemonMap by viewModel.userPokemonMap.collectAsState()
     var isFilterMenuVisible by remember { mutableStateOf(false) }
     var selectedGame by remember { mutableStateOf<String?>(null) }
-    var selectedGeneration by remember { mutableStateOf<Int?>(null) }
+    var selectedGenerations by remember { mutableStateOf<Set<Int>>(emptySet()) }
     var showOnlyShinyDex by remember { mutableStateOf(false) }
     val filterLength = 240
 
@@ -94,13 +96,16 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
         viewModel.fetchUserPokemon()
     }
 
-    LaunchedEffect(selectedGame, selectedGeneration) {
+    LaunchedEffect(selectedGame, selectedGenerations) {
         when {
+            selectedGame != null && selectedGenerations.isNotEmpty() -> {
+                viewModel.getPokemonByGameAndGenerations(selectedGame!!, selectedGenerations)
+            }
             selectedGame != null -> {
                 viewModel.getPokemonByGame(selectedGame!!)
             }
-            selectedGeneration != null -> {
-                viewModel.getPokemonByGeneration(selectedGeneration!!)
+            selectedGame == null && selectedGenerations.isNotEmpty() -> {
+                viewModel.getPokemonByGenerations(selectedGenerations)
             }
             else -> {
                 viewModel.fetchPokemonList()
@@ -130,7 +135,7 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                             )
                             FilterChip(
                                 onClick = { showOnlyShinyDex = true },
-                                label = { Text(stringResource(R.string.ShinyDex)) },
+                                label = { Text(stringResource(R.string.shinydex)) },
                                 selected = showOnlyShinyDex
                             )
                         }
@@ -188,13 +193,13 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
         Box(modifier = Modifier.fillMaxSize()) {
             FilterMenu(
                 selectedGame = selectedGame,
-                selectedGeneration = selectedGeneration,
+                selectedGenerations = selectedGenerations,
                 onGameSelectionChange = { selectedGame = it },
-                onGenerationSelectionChange = { selectedGeneration = it },
+                onGenerationsSelectionChange = { selectedGenerations = it },
                 onDismiss = { isFilterMenuVisible = false },
                 onClearFilters = {
                     selectedGame = null
-                    selectedGeneration = null
+                    selectedGenerations = emptySet()
                 },
                 filterLength = filterLength,
                 modifier = Modifier.align(Alignment.CenterEnd)
@@ -206,14 +211,17 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
 @Composable
 fun FilterMenu(
     selectedGame: String?,
-    selectedGeneration: Int?,
+    selectedGenerations: Set<Int>,
     onGameSelectionChange: (String?) -> Unit,
-    onGenerationSelectionChange: (Int?) -> Unit,
+    onGenerationsSelectionChange: (Set<Int>) -> Unit,
     onDismiss: () -> Unit,
     onClearFilters: () -> Unit,
     filterLength: Int,
     modifier: Modifier = Modifier
 ) {
+    var isGenerationsExpanded by remember { mutableStateOf(false) }
+    var isGamesExpanded by remember { mutableStateOf(false) }
+
     Surface(
         modifier = modifier
             .fillMaxHeight()
@@ -251,73 +259,168 @@ fun FilterMenu(
                     .weight(1f)
                     .verticalScroll(rememberScrollState())
             ) {
-                Text(
-                    text = stringResource(R.string.Games_and_generations),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                val gamesByGeneration = GameMasterData.GAMES.groupBy { it.generation ?: 0 }.toSortedMap()
-
-                gamesByGeneration.forEach { (generation, games) ->
-                    if (generation > 0) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    if (selectedGeneration == generation) {
-                                        onGenerationSelectionChange(null)
-                                    } else {
-                                        onGenerationSelectionChange(generation)
-                                        onGameSelectionChange(null)
-                                    }
-                                }
-                                .padding(vertical = 4.dp)
-                        ) {
-                            Checkbox(
-                                checked = selectedGeneration == generation,
-                                onCheckedChange = null
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
+                // Generations Section
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { isGenerationsExpanded = !isGenerationsExpanded },
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column {
                             Text(
-                                text = stringResource(R.string.generation_x, generation),
-                                style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = FontWeight.Medium,
-                                color = MaterialTheme.colorScheme.primary,
+                                text = stringResource(R.string.generations),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold
                             )
                         }
+                        Icon(
+                            imageVector = if (isGenerationsExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                            contentDescription = if (isGenerationsExpanded) stringResource(R.string.collapse) else stringResource(R.string.expand)
+                        )
+                    }
+                }
 
-                        games.forEach { game ->
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable {
-                                        if (selectedGame == game.name) {
-                                            onGameSelectionChange(null)
-                                        } else {
-                                            onGameSelectionChange(game.name)
-                                            onGenerationSelectionChange(null)
+                AnimatedVisibility(visible = isGenerationsExpanded) {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surface
+                        )
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            (1..9).forEach { generation ->
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable {
+                                            val newSelection = if (selectedGenerations.contains(generation)) {
+                                                selectedGenerations - generation
+                                            } else {
+                                                selectedGenerations + generation
+                                            }
+                                            onGenerationsSelectionChange(newSelection)
                                         }
-                                    }
-                                    .padding(vertical = 2.dp, horizontal = 0.dp)
-                                    .padding(start = 24.dp)
-                            ) {
-                                Checkbox(
-                                    checked = selectedGame == game.name,
-                                    onCheckedChange = null
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
+                                ) {
+                                    Checkbox(
+                                        checked = selectedGenerations.contains(generation),
+                                        onCheckedChange = { isChecked ->
+                                            val newSelection = if (isChecked) {
+                                                selectedGenerations + generation
+                                            } else {
+                                                selectedGenerations - generation
+                                            }
+                                            onGenerationsSelectionChange(newSelection)
+                                        }
+                                    )
+                                    Spacer(modifier = Modifier.width(2.dp))
+                                    Text(
+                                        text = stringResource(R.string.generation_x, generation),
+                                        style = MaterialTheme.typography.bodyMedium
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Games Section
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { isGamesExpanded = !isGamesExpanded },
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column {
+                            Text(
+                                text = stringResource(R.string.games),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            selectedGame?.let { game ->
                                 Text(
-                                    text = game.name,
-                                    style = MaterialTheme.typography.bodyMedium
+                                    text = game,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.primary
                                 )
                             }
                         }
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Icon(
+                            imageVector = if (isGamesExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                            contentDescription = if (isGamesExpanded) stringResource(R.string.collapse) else stringResource(R.string.expand)
+                        )
+                    }
+                }
+
+                AnimatedVisibility(visible = isGamesExpanded) {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surface
+                        )
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            val gamesByGeneration = GameMasterData.GAMES.groupBy { it.generation ?: 0 }.toSortedMap()
+
+                            gamesByGeneration.forEach { (generation, games) ->
+                                if (generation > 0) {
+                                    Text(
+                                        text = stringResource(R.string.generation_x, generation),
+                                        style = MaterialTheme.typography.labelLarge,
+                                        fontWeight = FontWeight.Medium,
+                                        color = MaterialTheme.colorScheme.primary,
+                                        modifier = Modifier.padding(vertical = 2.dp)
+                                    )
+
+                                    games.forEach { game ->
+                                        Row(
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .clickable {
+                                                    onGameSelectionChange(
+                                                        if (selectedGame == game.name) null else game.name
+                                                    )
+                                                }
+                                        ) {
+                                            Checkbox(
+                                                checked = selectedGame == game.name,
+                                                onCheckedChange = { isChecked ->
+                                                    onGameSelectionChange(
+                                                        if (isChecked) game.name else null
+                                                    )
+                                                }
+                                            )
+                                            Spacer(modifier = Modifier.width(2.dp))
+                                            Text(
+                                                text = game.name,
+                                                style = MaterialTheme.typography.bodyMedium
+                                            )
+                                        }
+                                    }
+                                    Spacer(modifier = Modifier.height(2.dp))
+                                }
+                            }
+                        }
                     }
                 }
             }

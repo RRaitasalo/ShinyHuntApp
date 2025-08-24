@@ -54,6 +54,93 @@ interface PokemonDao {
 
     @Query("SELECT * FROM pokemon WHERE id BETWEEN :startId AND :endId")
     suspend fun getPokemonByGeneration(startId: Int, endId: Int): List<Pokemon>
+
+    @Query("""
+        SELECT * FROM pokemon 
+        WHERE nationalDexNumber BETWEEN :start1 AND :end1
+        OR nationalDexNumber BETWEEN :start2 AND :end2
+        OR nationalDexNumber BETWEEN :start3 AND :end3
+        OR nationalDexNumber BETWEEN :start4 AND :end4
+        OR nationalDexNumber BETWEEN :start5 AND :end5
+        OR nationalDexNumber BETWEEN :start6 AND :end6
+        OR nationalDexNumber BETWEEN :start7 AND :end7
+        OR nationalDexNumber BETWEEN :start8 AND :end8
+        OR nationalDexNumber BETWEEN :start9 AND :end9
+        ORDER BY nationalDexNumber
+    """)
+    suspend fun getPokemonByGenerationsRaw(
+        start1: Int = 0, end1: Int = 0,
+        start2: Int = 0, end2: Int = 0,
+        start3: Int = 0, end3: Int = 0,
+        start4: Int = 0, end4: Int = 0,
+        start5: Int = 0, end5: Int = 0,
+        start6: Int = 0, end6: Int = 0,
+        start7: Int = 0, end7: Int = 0,
+        start8: Int = 0, end8: Int = 0,
+        start9: Int = 0, end9: Int = 0
+    ): List<Pokemon>
+
+    suspend fun getPokemonByGenerations(ranges: List<Pair<Int, Int>>): List<Pokemon> {
+        val paddedRanges = ranges + List(9 - ranges.size) { Pair(0, 0) }
+
+        return getPokemonByGenerationsRaw(
+            paddedRanges[0].first, paddedRanges[0].second,
+            paddedRanges[1].first, paddedRanges[1].second,
+            paddedRanges[2].first, paddedRanges[2].second,
+            paddedRanges[3].first, paddedRanges[3].second,
+            paddedRanges[4].first, paddedRanges[4].second,
+            paddedRanges[5].first, paddedRanges[5].second,
+            paddedRanges[6].first, paddedRanges[6].second,
+            paddedRanges[7].first, paddedRanges[7].second,
+            paddedRanges[8].first, paddedRanges[8].second
+        )
+    }
+
+    @Query("""
+    SELECT p.* FROM pokemon p
+    INNER JOIN game_availability ga ON p.id = ga.pokemonId AND ga.obtainMethod IN ('wild', 'evolve', 'breed')
+    INNER JOIN games g ON ga.gameId = g.id
+    WHERE g.name = :gameName
+    AND (p.nationalDexNumber BETWEEN :start1 AND :end1
+    OR p.nationalDexNumber BETWEEN :start2 AND :end2
+    OR p.nationalDexNumber BETWEEN :start3 AND :end3
+    OR p.nationalDexNumber BETWEEN :start4 AND :end4
+    OR p.nationalDexNumber BETWEEN :start5 AND :end5
+    OR p.nationalDexNumber BETWEEN :start6 AND :end6
+    OR p.nationalDexNumber BETWEEN :start7 AND :end7
+    OR p.nationalDexNumber BETWEEN :start8 AND :end8
+    OR p.nationalDexNumber BETWEEN :start9 AND :end9)
+    ORDER BY p.nationalDexNumber
+""")
+    suspend fun getPokemonByGameAndGenerationsRaw(
+        gameName: String,
+        start1: Int = 0, end1: Int = 0,
+        start2: Int = 0, end2: Int = 0,
+        start3: Int = 0, end3: Int = 0,
+        start4: Int = 0, end4: Int = 0,
+        start5: Int = 0, end5: Int = 0,
+        start6: Int = 0, end6: Int = 0,
+        start7: Int = 0, end7: Int = 0,
+        start8: Int = 0, end8: Int = 0,
+        start9: Int = 0, end9: Int = 0
+    ): List<Pokemon>
+
+    suspend fun getPokemonByGameAndGenerations(gameName: String, ranges: List<Pair<Int, Int>>): List<Pokemon> {
+        val paddedRanges = ranges + List(9 - ranges.size) { Pair(0, 0) }
+
+        return getPokemonByGameAndGenerationsRaw(
+            gameName,
+            paddedRanges[0].first, paddedRanges[0].second,
+            paddedRanges[1].first, paddedRanges[1].second,
+            paddedRanges[2].first, paddedRanges[2].second,
+            paddedRanges[3].first, paddedRanges[3].second,
+            paddedRanges[4].first, paddedRanges[4].second,
+            paddedRanges[5].first, paddedRanges[5].second,
+            paddedRanges[6].first, paddedRanges[6].second,
+            paddedRanges[7].first, paddedRanges[7].second,
+            paddedRanges[8].first, paddedRanges[8].second
+        )
+    }
 }
 
 @Dao

@@ -105,7 +105,7 @@ class PokemonViewModel(
         viewModelScope.launch {
             try {
                 val pokemonList = repository.getPokemonByGame(gameName)
-                Log.d("PokemonViewModel", "Pokemon fetched from Room: $pokemonList")
+                Log.d("PokemonViewModel", "Pokemon fetched by game: $pokemonList")
                 _pokemonList.value = pokemonList
             } catch (e: Exception) {
                 Log.e("PokemonViewModel", "Error fetching Pokémon by game", e)
@@ -113,14 +113,26 @@ class PokemonViewModel(
         }
     }
 
-    fun getPokemonByGeneration(generation: Int) {
+    fun getPokemonByGenerations(generations: Set<Int>) {
         viewModelScope.launch {
             try {
-                val pokemonList = repository.getPokemonByGeneration(generation)
-                Log.d("PokemonViewModel", "Pokemon fetched from Room: $pokemonList")
+                val pokemonList = repository.getPokemonByGenerations(generations)
+                Log.d("PokemonViewModel", "Pokemon fetched by generations: $pokemonList")
                 _pokemonList.value = pokemonList
             } catch (e: Exception) {
-                Log.e("PokemonViewModel", "Error fetching Pokémon by generation", e)
+                Log.e("PokemonViewModel", "Error fetching Pokémon by generations", e)
+            }
+        }
+    }
+
+    fun getPokemonByGameAndGenerations(gameName: String, generations: Set<Int>) {
+        viewModelScope.launch {
+            try {
+                val pokemonList = repository.getPokemonByGameAndGenerations(gameName, generations)
+                Log.d("PokemonViewModel", "Pokemon fetched by game and generations: $pokemonList")
+                _pokemonList.value = pokemonList
+            } catch (e: Exception) {
+                Log.e("PokemonViewModel", "Error fetching Pokémon by game and generations", e)
             }
         }
     }

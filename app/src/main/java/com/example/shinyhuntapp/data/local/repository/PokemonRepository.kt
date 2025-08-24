@@ -46,7 +46,7 @@ class PokemonRepository(
 
     private suspend fun loadFromJsonBundle(): Boolean {
         return try {
-            val jsonString = context.assets.open("pokemon_bundle_v2.json")
+            val jsonString = context.assets.open("pokemon_bundle_v3.json")
                 .bufferedReader().use { it.readText() }
             val bundle = Gson().fromJson(jsonString, DataBundle::class.java)
 
@@ -89,8 +89,8 @@ class PokemonRepository(
         return pokemonDao.getCatchablePokemonByGame(game.id)
     }
 
-    suspend fun getPokemonByGeneration(generation: Int): List<Pokemon> {
-        val (start, end) = when (generation) {
+    private fun getPokedexRangesFromGeneration(generation: Int): Pair<Int, Int> {
+        return when (generation) {
             1 -> Pair(1, 151)
             2 -> Pair(152, 251)
             3 -> Pair(252, 386)
@@ -100,8 +100,30 @@ class PokemonRepository(
             7 -> Pair(722, 809)
             8 -> Pair(810, 905)
             9 -> Pair(906, 1025)
-            else -> return emptyList()
+            else -> throw IllegalArgumentException("Invalid generation: $generation")
         }
-        return pokemonDao.getPokemonByGeneration(start, end)
+    }
+
+    suspend fun getPokemonByGenerations(generations: Set<Int>): List<Pokemon> {
+        val allRanges = mutableListOf<Pair<Int, Int>>()
+        for (generation in generations) {
+            val (start, end) = getPokedexRangesFromGeneration(generation)
+            allRanges.add(Pair(start, end))
+        }
+        if (allRanges.isEmpty()) return emptyList()
+
+        return pokemonDao.getPokemonByGenerations(allRanges)
+    }
+
+    suspend fun getPokemonByGameAndGenerations(gameName: String, generations: Set<Int>): List<Pokemon> {
+        val allRanges = mutableListOf<Pair<Int, Int>>()
+        for (generation in generations) {
+            val (start, end) = getPokedexRangesFromGeneration(generation)
+            allRanges.add(Pair(start, end))
+        }
+        if (allRanges.isEmpty()) return getPokemonByGame(gameName)
+        Log.d("Repository", "All ranges: $allRanges")
+
+        return pokemonDao.getPokemonByGameAndGenerations(gameName, allRanges)
     }
 }
