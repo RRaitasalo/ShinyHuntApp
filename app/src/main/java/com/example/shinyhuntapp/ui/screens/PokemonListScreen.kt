@@ -42,6 +42,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -50,6 +53,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -119,28 +123,35 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
         topBar = {
             TopAppBar(
                 title = {
-                    Column {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         Text(
                             text = stringResource(R.string.pokemon_list),
                             style = MaterialTheme.typography.headlineMedium
                         )
-                        Row(
-                            modifier = Modifier.padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            FilterChip(
-                                onClick = { showOnlyShinyDex = false },
-                                label = { Text(stringResource(R.string.all)) },
-                                selected = !showOnlyShinyDex
-                            )
-                            FilterChip(
-                                onClick = { showOnlyShinyDex = true },
-                                label = { Text(stringResource(R.string.shinydex)) },
-                                selected = showOnlyShinyDex
-                            )
-                        }
+                        var selectedIndex by remember { mutableIntStateOf(0) }
+                        val options = listOf(stringResource(R.string.all), stringResource(R.string.shinydex))
 
+                        SingleChoiceSegmentedButtonRow {
+                            options.forEachIndexed { index, option ->
+                                SegmentedButton(
+                                    onClick = {
+                                        selectedIndex = index
+                                        showOnlyShinyDex = (index == 1)
+                                    },
+                                    selected = selectedIndex == index,
+                                    label = { Text(option) },
+                                    shape = SegmentedButtonDefaults.itemShape(
+                                        index = index,
+                                        count = options.size
+                                    )
+                                )
+                            }
+                        }
                     }
+
                 },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
@@ -157,7 +168,8 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                             contentDescription = stringResource(R.string.filter_pokemon)
                         )
                     }
-                }
+                },
+                modifier = Modifier.fillMaxWidth().height(120.dp)
             )
         }
     ) { innerPadding ->
