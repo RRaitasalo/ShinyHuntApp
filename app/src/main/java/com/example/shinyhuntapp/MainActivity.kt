@@ -25,6 +25,7 @@ import com.example.shinyhuntapp.ui.screens.MainScreen
 import com.example.shinyhuntapp.ui.screens.PokemonInfoScreen
 import com.example.shinyhuntapp.ui.screens.PokemonListScreen
 import com.example.shinyhuntapp.ui.screens.RegisterScreen
+import com.example.shinyhuntapp.ui.screens.SettingsScreen
 import com.example.shinyhuntapp.ui.theme.ShinyHuntAppTheme
 import com.example.shinyhuntapp.viewmodels.HuntViewModel
 import com.example.shinyhuntapp.viewmodels.HuntViewModelFactory
@@ -82,6 +83,7 @@ class MainActivity : ComponentActivity() {
             composable(Routes.MAIN) { MainScreen(navController, pokemonViewModel, loginViewModel) }
             composable(Routes.POKEMON_LIST) { PokemonListScreen(navController, pokemonViewModel) }
             composable(Routes.DEV_TOOLS) { DevToolsScreen(navController, pokemonViewModel, loginViewModel) }
+            composable(Routes.SETTINGS) { SettingsScreen(navController, loginViewModel) }
             composable(
                 route = "${Routes.POKEMON_INFO}/{$pokemonIdString}",
                 arguments = listOf(navArgument(pokemonIdString) { type = NavType.IntType })

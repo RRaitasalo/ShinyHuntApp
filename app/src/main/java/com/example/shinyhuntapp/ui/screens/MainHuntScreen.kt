@@ -15,6 +15,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -22,6 +27,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -42,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.Hunt
 import com.example.shinyhuntapp.data.local.Pokemon
@@ -73,6 +81,8 @@ fun MainHuntScreen(
         huntViewModel.getAllHunts()
     }
 
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -91,6 +101,34 @@ fun MainHuntScreen(
                     }
                 },
             )
+        },
+        bottomBar = {
+            NavigationBar {
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.Home, contentDescription = stringResource(R.string.home)) },
+                    label = { Text(stringResource(R.string.home)) },
+                    selected = currentRoute == Routes.MAIN,
+                    onClick = { navController.navigate(Routes.MAIN) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = stringResource(R.string.pokemon_list)) },
+                    label = { Text(stringResource(R.string.pokedex)) },
+                    selected = currentRoute == Routes.POKEMON_LIST,
+                    onClick = { navController.navigate(Routes.POKEMON_LIST) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.PlayArrow, contentDescription = stringResource(R.string.hunt)) },
+                    label = { Text(stringResource(R.string.hunt)) },
+                    selected = currentRoute == Routes.HUNT,
+                    onClick = { navController.navigate(Routes.HUNT) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
+                    label = { Text(stringResource(R.string.settings)) },
+                    selected = currentRoute == Routes.SETTINGS,
+                    onClick = { navController.navigate(Routes.SETTINGS) }
+                )
+            }
         },
     ) { paddingValues ->
         Column(

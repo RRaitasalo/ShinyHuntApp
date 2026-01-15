@@ -13,11 +13,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -31,6 +35,8 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -55,6 +61,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.AsyncImage
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.HuntMethod
@@ -86,6 +93,7 @@ fun HuntScreen(
     val huntSavedMessage = stringResource(R.string.hunt_saved)
 
     val currentRoute = Routes.huntWithPokemonId(pokemonId)
+    val currentRouteForNav = navController.currentBackStackEntryAsState().value?.destination?.route
 
     LaunchedEffect(pokemonId) {
         huntViewModel.startNewHunt(pokemonId)
@@ -123,6 +131,34 @@ fun HuntScreen(
                     }
                 }
             )
+        },
+        bottomBar = {
+            NavigationBar {
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.Home, contentDescription = stringResource(R.string.home)) },
+                    label = { Text(stringResource(R.string.home)) },
+                    selected = currentRouteForNav == Routes.MAIN,
+                    onClick = { navController.navigate(Routes.MAIN) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = stringResource(R.string.pokemon_list)) },
+                    label = { Text(stringResource(R.string.pokedex)) },
+                    selected = currentRouteForNav == Routes.POKEMON_LIST,
+                    onClick = { navController.navigate(Routes.POKEMON_LIST) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.PlayArrow, contentDescription = stringResource(R.string.hunt)) },
+                    label = { Text(stringResource(R.string.hunt)) },
+                    selected = currentRouteForNav?.startsWith(Routes.HUNT) == true,
+                    onClick = { navController.navigate(Routes.HUNT) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
+                    label = { Text(stringResource(R.string.settings)) },
+                    selected = currentRouteForNav == Routes.SETTINGS,
+                    onClick = { navController.navigate(Routes.SETTINGS) }
+                )
+            }
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { paddingValues ->

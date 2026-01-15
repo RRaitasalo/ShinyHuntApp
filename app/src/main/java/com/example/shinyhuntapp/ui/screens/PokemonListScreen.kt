@@ -24,11 +24,16 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -40,6 +45,8 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButton
@@ -64,6 +71,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.AsyncImage
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.GameMasterData
@@ -94,6 +102,8 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
             }
         }
     }
+
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
     LaunchedEffect(Unit) {
         viewModel.fetchPokemonList()
@@ -171,6 +181,34 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                 },
                 modifier = Modifier.fillMaxWidth().height(120.dp)
             )
+        },
+        bottomBar = {
+            NavigationBar {
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.Home, contentDescription = stringResource(R.string.home)) },
+                    label = { Text(stringResource(R.string.home)) },
+                    selected = currentRoute == Routes.MAIN,
+                    onClick = { navController.navigate(Routes.MAIN) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = stringResource(R.string.pokemon_list)) },
+                    label = { Text(stringResource(R.string.pokedex)) },
+                    selected = currentRoute == Routes.POKEMON_LIST,
+                    onClick = { navController.navigate(Routes.POKEMON_LIST) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.PlayArrow, contentDescription = stringResource(R.string.hunt)) },
+                    label = { Text(stringResource(R.string.hunt)) },
+                    selected = currentRoute == Routes.HUNT,
+                    onClick = { navController.navigate(Routes.HUNT) }
+                )
+                NavigationBarItem(
+                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
+                    label = { Text(stringResource(R.string.settings)) },
+                    selected = currentRoute == Routes.SETTINGS,
+                    onClick = { navController.navigate(Routes.SETTINGS) }
+                )
+            }
         }
     ) { innerPadding ->
         LazyColumn(
