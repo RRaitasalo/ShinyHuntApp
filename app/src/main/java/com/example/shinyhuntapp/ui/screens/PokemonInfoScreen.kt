@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.PlayArrow
@@ -87,9 +88,9 @@ fun PokemonInfoScreen(
                     onClick = { navController.navigate(Routes.MAIN) }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.List, contentDescription = stringResource(R.string.pokemon_list)) },
+                    icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = stringResource(R.string.pokemon_list)) },
                     label = { Text(stringResource(R.string.pokedex)) },
-                    selected = true,  // As per user request
+                    selected = true,
                     onClick = { navController.navigate(Routes.POKEMON_LIST) }
                 )
                 NavigationBarItem(
@@ -97,12 +98,6 @@ fun PokemonInfoScreen(
                     label = { Text(stringResource(R.string.hunt)) },
                     selected = currentRouteForNav?.startsWith(Routes.HUNT) == true,
                     onClick = { navController.navigate(Routes.HUNT) }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
-                    label = { Text(stringResource(R.string.settings)) },
-                    selected = currentRouteForNav == Routes.SETTINGS,
-                    onClick = { navController.navigate(Routes.SETTINGS) }
                 )
             }
         }

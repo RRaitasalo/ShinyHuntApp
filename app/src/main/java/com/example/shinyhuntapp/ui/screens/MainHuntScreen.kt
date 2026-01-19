@@ -18,7 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Settings
+
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -113,12 +113,6 @@ fun MainHuntScreen(
                     label = { Text(stringResource(R.string.hunt)) },
                     selected = currentRoute == Routes.HUNT,
                     onClick = { navController.navigate(Routes.HUNT) }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
-                    label = { Text(stringResource(R.string.settings)) },
-                    selected = currentRoute == Routes.SETTINGS,
-                    onClick = { navController.navigate(Routes.SETTINGS) }
                 )
             }
         },

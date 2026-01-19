@@ -22,12 +22,15 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -49,6 +52,7 @@ import com.example.shinyhuntapp.viewmodels.HuntViewModel
 import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainScreen(navController: NavController, pokemonViewModel: PokemonViewModel, loginViewModel: LoginViewModel, huntViewModel: HuntViewModel) {
@@ -70,6 +74,16 @@ fun MainScreen(navController: NavController, pokemonViewModel: PokemonViewModel,
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("ShinyHuntApp") },
+                actions = {
+                    IconButton(onClick = { navController.navigate(Routes.SETTINGS) }) {
+                        Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings))
+                    }
+                }
+            )
+        },
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
@@ -89,12 +103,6 @@ fun MainScreen(navController: NavController, pokemonViewModel: PokemonViewModel,
                     label = { Text(stringResource(R.string.hunt)) },
                     selected = currentRoute == Routes.HUNT,
                     onClick = { navController.navigate(Routes.HUNT) }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
-                    label = { Text(stringResource(R.string.settings)) },
-                    selected = currentRoute == Routes.SETTINGS,
-                    onClick = { navController.navigate(Routes.SETTINGS) }
                 )
             }
         }

@@ -31,7 +31,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Settings
+
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Button
@@ -192,12 +192,6 @@ fun PokemonListScreen(navController: NavController, viewModel: PokemonViewModel)
                     label = { Text(stringResource(R.string.hunt)) },
                     selected = currentRoute == Routes.HUNT,
                     onClick = { navController.navigate(Routes.HUNT) }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
-                    label = { Text(stringResource(R.string.settings)) },
-                    selected = currentRoute == Routes.SETTINGS,
-                    onClick = { navController.navigate(Routes.SETTINGS) }
                 )
             }
         }

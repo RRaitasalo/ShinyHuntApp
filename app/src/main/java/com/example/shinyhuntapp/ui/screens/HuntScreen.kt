@@ -151,12 +151,6 @@ fun HuntScreen(
                     selected = currentRouteForNav?.startsWith(Routes.HUNT) == true,
                     onClick = { navController.navigate(Routes.HUNT) }
                 )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings)) },
-                    label = { Text(stringResource(R.string.settings)) },
-                    selected = currentRouteForNav == Routes.SETTINGS,
-                    onClick = { navController.navigate(Routes.SETTINGS) }
-                )
             }
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }
