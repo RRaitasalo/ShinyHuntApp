@@ -1,10 +1,12 @@
 package com.example.shinyhuntapp.ui.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -133,7 +135,9 @@ fun PokemonInfoScreen(
         ){
             // Sprites section
             Row(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min)
             ) {
                 AsyncImage(
                     model = pokemon?.spriteUrl,
@@ -144,7 +148,7 @@ fun PokemonInfoScreen(
                         .clip(RoundedCornerShape(8.dp)),
                     contentScale = ContentScale.Fit
                 )
-                VerticalDivider(modifier = Modifier.padding(horizontal = 4.dp))
+                VerticalDivider(modifier = Modifier.padding(horizontal = 4.dp), thickness = 2.dp)
                 AsyncImage(
                     model = pokemon?.shinySprite,
                     contentDescription = "Shiny ${pokemon?.name}",
@@ -155,7 +159,7 @@ fun PokemonInfoScreen(
                     contentScale = ContentScale.Fit
                 )
             }
-            
+
             if (hunt != null) {
                 Text(text = stringResource(R.string.hunt_information))
                 HuntCard(
