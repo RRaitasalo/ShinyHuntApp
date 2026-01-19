@@ -1,9 +1,11 @@
 package com.example.shinyhuntapp
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
@@ -41,6 +43,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var huntViewModel: HuntViewModel
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -62,13 +65,14 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ShinyHuntAppTheme {
-                AppNavigation(pokemonViewModel, loginViewModel)
+                AppNavigation(pokemonViewModel, loginViewModel, huntViewModel)
             }
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @Composable
-    fun AppNavigation(pokemonViewModel: PokemonViewModel, loginViewModel: LoginViewModel) {
+    fun AppNavigation(pokemonViewModel: PokemonViewModel, loginViewModel: LoginViewModel, huntViewModel: HuntViewModel) {
         val navController = rememberNavController()
         val preferences = PreferenceManager(this)
         val userId = preferences.getLoggedInUserId()
@@ -80,7 +84,7 @@ class MainActivity : ComponentActivity() {
         NavHost(navController = navController, startDestination = startDestination) {
             composable(Routes.LOGIN) { LoginScreen(navController, this@MainActivity) }
             composable(Routes.REGISTER) { RegisterScreen(navController, this@MainActivity) }
-            composable(Routes.MAIN) { MainScreen(navController, pokemonViewModel, loginViewModel) }
+            composable(Routes.MAIN) { MainScreen(navController, pokemonViewModel, loginViewModel, huntViewModel) }
             composable(Routes.POKEMON_LIST) { PokemonListScreen(navController, pokemonViewModel) }
             composable(Routes.DEV_TOOLS) { DevToolsScreen(navController, pokemonViewModel, loginViewModel) }
             composable(Routes.SETTINGS) { SettingsScreen(navController, loginViewModel) }

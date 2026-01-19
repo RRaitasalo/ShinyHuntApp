@@ -30,6 +30,9 @@ class PokemonViewModel(
     private val _userPokemonMap = MutableStateFlow<Map<Int, UserPokemon>>(emptyMap())
     val userPokemonMap: StateFlow<Map<Int, UserPokemon>> = _userPokemonMap
 
+    private val _isUserPokemonLoaded = MutableStateFlow(false)
+    val isUserPokemonLoaded: StateFlow<Boolean> = _isUserPokemonLoaded
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun fetchAndStorePokemonIfNeeded() {
         if (!preferences.hasFetchedPokemon()) {
@@ -71,8 +74,10 @@ class PokemonViewModel(
                 val userId = preferences.getLoggedInUserId()
                 val userPokemonList = userPokemonDao.getAllUserPokemon(userId)
                 _userPokemonMap.value = userPokemonList.associateBy { it.pokemonId }
+                _isUserPokemonLoaded.value = true
             } catch (e: Exception) {
                 Log.e("PokemonViewModel", "Error fetching user Pokemon", e)
+                _isUserPokemonLoaded.value = true
             }
         }
     }

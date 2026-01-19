@@ -58,8 +58,6 @@
     <string name="collapse">Collapse</string>
     <string name="expand">Expand</string>
 
-
-
     -- Hunt --
     <string name="hunt">Hunt</string>
     <string name="save_hunt">Save Hunt</string>
@@ -95,11 +93,12 @@
     <string name="select_pokemon">Select a Pokemon</string>
     <string name="search_pokemon">Search Pokemon</string>
     <string name="pokemon_id_format">#%1$d</string>
-
-
     <plurals name="add_encounters">
         <item quantity="one">Add %1$d Encounter</item>
         <item quantity="other">Add %1$d Encounters</item>
     </plurals>
+
+    -- MainScreen --
+    <string name="captured_shinies">Captured Shinies</string>
 
 </resources>
