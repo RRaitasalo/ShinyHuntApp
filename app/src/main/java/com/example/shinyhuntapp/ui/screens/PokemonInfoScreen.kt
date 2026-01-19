@@ -1,15 +1,20 @@
 package com.example.shinyhuntapp.ui.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -20,6 +25,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -27,11 +33,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import coil.compose.AsyncImage
 import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.Pokemon
 import com.example.shinyhuntapp.navigation.Routes
@@ -64,10 +75,22 @@ fun PokemonInfoScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text(
-                    text = pokemon?.name.toString(),
-                    style = MaterialTheme.typography.headlineMedium
-                )
+                title = {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.offset(x = (-28).dp).fillMaxWidth()
+                    ) {
+                        Text(
+                            text = pokemon?.name?.replaceFirstChar { it.uppercase() } ?: "",
+                            style = MaterialTheme.typography.headlineMedium,
+                            textAlign = TextAlign.Center
+                        )
+                        Text(
+                            text = "#${pokemon?.nationalDexNumber?.toString()?.padStart(3, '0') ?: ""}",
+                            style = MaterialTheme.typography.bodySmall,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
@@ -103,11 +126,36 @@ fun PokemonInfoScreen(
         }
     ) { innerPadding ->
         Column(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
         ){
-            Text(text = stringResource(R.string.pokemon_information))
-            Text(text = stringResource(R.string.name_of, pokemon?.name.toString()))
-            Text(text = stringResource(R.string.national_dex_number, pokemon?.nationalDexNumber.toString()))
+            // Sprites section
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                AsyncImage(
+                    model = pokemon?.spriteUrl,
+                    contentDescription = "Normal ${pokemon?.name}",
+                    modifier = Modifier
+                        .weight(1f)
+                        .aspectRatio(1f)
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.Fit
+                )
+                VerticalDivider(modifier = Modifier.padding(horizontal = 4.dp))
+                AsyncImage(
+                    model = pokemon?.shinySprite,
+                    contentDescription = "Shiny ${pokemon?.name}",
+                    modifier = Modifier
+                        .weight(1f)
+                        .aspectRatio(1f)
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.Fit
+                )
+            }
+            
             if (hunt != null) {
                 Text(text = stringResource(R.string.hunt_information))
                 HuntCard(
