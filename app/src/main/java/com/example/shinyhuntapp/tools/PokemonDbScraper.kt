@@ -1,15 +1,14 @@
 package com.example.shinyhuntapp.tools
 
-import android.util.Log
 import com.example.shinyhuntapp.data.local.GameAvailability
 import com.example.shinyhuntapp.data.local.GameMasterData
 import com.google.gson.GsonBuilder
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
 import kotlinx.coroutines.delay
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+import org.jsoup.nodes.Element
 import java.util.concurrent.TimeUnit
 
 class PokemonDbScraper {

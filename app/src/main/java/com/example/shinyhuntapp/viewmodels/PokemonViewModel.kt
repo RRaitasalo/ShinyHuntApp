@@ -13,7 +13,6 @@ import com.example.shinyhuntapp.data.local.Pokemon
 import com.example.shinyhuntapp.data.local.UserPokemon
 import com.example.shinyhuntapp.data.local.UserPokemonDao
 import com.example.shinyhuntapp.data.local.repository.PokemonRepository
-import com.example.shinyhuntapp.data.network.RetrofitInstance
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

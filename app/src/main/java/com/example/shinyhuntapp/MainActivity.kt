@@ -6,11 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,7 +16,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.shinyhuntapp.data.PreferenceManager
 import com.example.shinyhuntapp.navigation.Routes
-import com.example.shinyhuntapp.tools.DataBundleCreator
 import com.example.shinyhuntapp.ui.screens.DevToolsScreen
 import com.example.shinyhuntapp.ui.screens.HuntScreen
 import com.example.shinyhuntapp.ui.screens.LoginScreen
@@ -35,7 +32,6 @@ import com.example.shinyhuntapp.viewmodels.LoginViewModel
 import com.example.shinyhuntapp.viewmodels.LoginViewModelFactory
 import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 import com.example.shinyhuntapp.viewmodels.PokemonViewModelFactory
-import kotlinx.coroutines.runBlocking
 
 class MainActivity : ComponentActivity() {
 

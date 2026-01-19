@@ -32,12 +32,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.shinyhuntapp.R
-import com.example.shinyhuntapp.data.local.Hunt
 import com.example.shinyhuntapp.data.local.Pokemon
 import com.example.shinyhuntapp.navigation.Routes
 import com.example.shinyhuntapp.ui.components.HuntCard
-import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 import com.example.shinyhuntapp.viewmodels.HuntViewModel
+import com.example.shinyhuntapp.viewmodels.PokemonViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)

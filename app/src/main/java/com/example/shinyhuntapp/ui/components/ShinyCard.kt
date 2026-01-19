@@ -15,7 +15,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.example.shinyhuntapp.R
 import com.example.shinyhuntapp.data.local.Pokemon
 import com.example.shinyhuntapp.navigation.Routes
 

@@ -1,6 +1,10 @@
 package com.example.shinyhuntapp.data.local
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
 import com.google.gson.Gson
 
 class Converters {
