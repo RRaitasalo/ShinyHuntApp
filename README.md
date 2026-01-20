@@ -16,7 +16,7 @@ An Android application for Pokémon shiny hunting. Track your shiny hunting prog
 - Display both regular and shiny sprites
 - Filter by game availability and generation
 
-### 🎮 Game Integration
+### Game Integration
 - Support for multiple Pokémon games
 - Game-specific availability information
 - Location and method tracking for each Pokémon
